@@ -38,7 +38,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Dirt
+  - name: Background
     uniqueID: 3774683831
     locked: 0
   - name: Roller Coaster Tracks
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Underground
+    uniqueID: 1321603101
     locked: 0

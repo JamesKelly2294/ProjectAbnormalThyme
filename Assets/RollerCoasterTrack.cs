@@ -4,8 +4,10 @@ using UnityEngine;
 
 public enum RollerCoasterTrackType
 {
-    Straight = 0,
-    Loop = 1
+    Loop = 0,
+    Straight,
+    Begin,
+    End,
 }
 
 public class RollerCoasterTrack : MonoBehaviour
