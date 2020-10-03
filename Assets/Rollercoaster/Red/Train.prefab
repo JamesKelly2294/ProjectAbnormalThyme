@@ -50,7 +50,7 @@ MonoBehaviour:
     type: 3}
   personPrefab: {fileID: 3270097275694417230, guid: dffb7deac2d55b6418d8c2f58b7eb21f,
     type: 3}
-  carWidth: 0.15
-  frontCarWidth: 0.1
-  numberOfCars: 0
+  carWidth: 0.23
+  frontCarWidth: 0.24
+  numberOfCars: 4
   numberOfPeople: 0
