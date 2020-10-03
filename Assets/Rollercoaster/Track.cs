@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum RollerCoasterTrackType
+public enum TrackType
 {
     Loop = 0,
     Straight,
-    Begin,
+    Start,
     End,
 }
 
-public class RollerCoasterTrack : MonoBehaviour
+public class Track : MonoBehaviour
 {
-    public RollerCoasterTrackType type;
+    public TrackType type;
 
     // Start is called before the first frame update
     void Start()
