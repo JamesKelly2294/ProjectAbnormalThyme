@@ -40,7 +40,11 @@ public class TrainCar : MonoBehaviour
         if ( zone != null ) {
             foreach (var person in people)
             {
-                person.moneyPrinter.excitement = zone.excitement;
+                if ( zone.oneShot ) {
+                    person.moneyPrinter.DispenseABill();
+                } else {
+                    person.moneyPrinter.excitement = zone.excitement;
+                }
             }
         }
     } 

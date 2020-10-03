@@ -32,12 +32,16 @@ public class MoneyPrinter : MonoBehaviour
         if ( t > dispenseTime ) {
             t -= dispenseTime;
 
-            moneyToDispense = DispenseABill(moneyToDispense);
+            DispenseABill();
         } 
     }
 
+    public void DispenseABill() {
+        moneyToDispense = DispenseABill(moneyToDispense);
+    }
+
     // Returns the new count of money
-    int DispenseABill(int current) {
+    public int DispenseABill(int current) {
         Money moneyPrefab;
         if (current >= purpleMoneyPrefab.value && Random.Range(0, 10) >= 8 ) {
             moneyPrefab = purpleMoneyPrefab;

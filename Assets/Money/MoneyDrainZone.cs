@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoneyDrainZone : MonoBehaviour
 {
 
-    public int fixedCost = 0;
+    public bool oneShot = false;
     public float excitement = 1f;
 
     // Start is called before the first frame update
