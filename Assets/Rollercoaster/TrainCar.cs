@@ -33,4 +33,26 @@ public class TrainCar : MonoBehaviour
 
         return true;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        MoneyDrainZone zone = other.gameObject.GetComponent<MoneyDrainZone>();
+        if ( zone != null ) {
+            foreach (var person in people)
+            {
+                person.moneyPrinter.excitement = zone.excitement;
+            }
+        }
+    } 
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        MoneyDrainZone zone = other.gameObject.GetComponent<MoneyDrainZone>();
+        if ( zone != null ) {
+            foreach (var person in people)
+            {
+                person.moneyPrinter.excitement = 0;
+            }
+        }
+    }
 }

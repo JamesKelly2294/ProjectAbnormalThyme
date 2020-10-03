@@ -187,8 +187,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  xAccelerationScale: 0.0025
-  yAccelerationScale: 0.002
+  xAccelerationScale: 0.003
+  yAccelerationScale: 0.0012
   animationTime: 2
-  rotationRate: -200
-  value: 10
+  rotationRate: -400
+  value: 100

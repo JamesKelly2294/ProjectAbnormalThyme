@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2444186526946092748}
   - component: {fileID: 2444186526946092749}
-  - component: {fileID: 2444186526946092747}
+  - component: {fileID: 1928640086378780013}
   m_Layer: 0
   m_Name: RedMoney
   m_TagString: Untagged
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2444186526946092747
+--- !u!114 &1928640086378780013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,8 +187,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  xAccelerationScale: 0.003
-  yAccelerationScale: 0.004
+  xAccelerationScale: 0.0025
+  yAccelerationScale: 0.0011
   animationTime: 2
-  rotationRate: -400
-  value: 100
+  rotationRate: -200
+  value: 10

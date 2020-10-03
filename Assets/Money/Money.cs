@@ -11,7 +11,7 @@ public class Money : MonoBehaviour
     public float xAccelerationScale;
     public float yAccelerationScale;
 
-    float t = 0;
+    public float t = 0;
     public float animationTime = 2;
 
     public float rotationRate = 100;

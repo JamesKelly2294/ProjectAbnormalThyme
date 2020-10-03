@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainCarPerson : MonoBehaviour
+public class MoneyDrainZone : MonoBehaviour
 {
 
-    public MoneyPrinter moneyPrinter;
+    public int fixedCost = 0;
+    public float excitement = 1f;
 
     // Start is called before the first frame update
     void Start()
