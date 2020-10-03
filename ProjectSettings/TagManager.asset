@@ -38,12 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Dirt
     uniqueID: 3774683831
     locked: 0
   - name: Roller Coaster Tracks
     uniqueID: 3306325855
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
