@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrainCar : MonoBehaviour
 {
-
+    public Train train;
     public List<TrainCarPerson> people;
 
     public List<float> peopleXPositions;

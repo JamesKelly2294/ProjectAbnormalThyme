@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6279540299107410699}
   - component: {fileID: 2805213164322088690}
+  - component: {fileID: 2714913688138282384}
   m_Layer: 0
   m_Name: Train
   m_TagString: Untagged
@@ -54,3 +55,18 @@ MonoBehaviour:
   frontCarWidth: 0.24
   numberOfCars: 4
   numberOfPeople: 0
+  onTrack: 0
+--- !u!114 &2714913688138282384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631912485352940545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffbdb2d10b51ad41840d98b9b5e070d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTrain: {fileID: 2805213164322088690}
+  speed: 1

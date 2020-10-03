@@ -2,14 +2,14 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(TrackPathManager))]
-public class TrackPathManagerEditor : Editor
+[CustomEditor(typeof(TrainTrackFollow))]
+public class TrainTrackFollowEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        TrackPathManager myScript = (TrackPathManager)target;
+        TrainTrackFollow myScript = (TrainTrackFollow)target;
         if (GUILayout.Button("Demo Animation"))
         {
             myScript.DemoAnimation();

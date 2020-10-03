@@ -235,13 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102e48c6c2c3f5447b1e6a4192a79467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  tracks: []
+  targetTrain: {fileID: 310380986}
+  speed: 1
 --- !u!4 &80230071
 Transform:
   m_ObjectHideFlags: 0
@@ -419,6 +414,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b71779632b25b4344922b9c6e23c1f6e, type: 3}
+--- !u!114 &310380986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2805213164322088690, guid: 7790f35674de4fd4299869353dcdfab2,
+    type: 3}
+  m_PrefabInstance: {fileID: 645768974}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e460a75b14280c4489203a4f8c6cb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &316475793 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7028556725779336504, guid: 2da6c653517e36c458deeedb9de7fb46,

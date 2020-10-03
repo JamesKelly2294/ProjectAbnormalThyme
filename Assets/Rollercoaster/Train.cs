@@ -19,6 +19,8 @@ public class Train : MonoBehaviour
 
     public int numberOfPeople;
 
+    public bool onTrack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,7 @@ public class Train : MonoBehaviour
             }
 
             TrainCar car = Instantiate(prefab, transform);
+            car.train = this;
             car.transform.localPosition = offset;
             offset -= new Vector3(xoffset, 0, 0);
 
