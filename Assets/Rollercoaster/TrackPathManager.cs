@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using DG.Tweening.Plugins.Core.PathCore;
 using System.Linq;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
+using DG.Tweening.Plugins.Core.PathCore;
 
 public class TrackPathManager : MonoBehaviour
 {
@@ -22,20 +24,18 @@ public class TrackPathManager : MonoBehaviour
         }
     }
 
-    public List<GameObject> targets;
-    private List<Vector3> targetPositions;
+    public Train targetTrain;
 
-    public List<Track> tracks;
-    
+    private List<GameObject> targets = new List<GameObject>();
+
+    private List<Track> tracks;
+    private List<TweenerCore<Vector3, Path, PathOptions>> activePaths;
+
     private void Awake()
     {
         _instance = this;
         tracks = new List<Track>();
-        targetPositions = new List<Vector3>();
-        foreach (GameObject go in targets)
-        {
-            targetPositions.Add(go.transform.position);
-        }
+        activePaths = new List<TweenerCore<Vector3, Path, PathOptions>>();
     }
 
     public void RegisterTrack(Track track)
@@ -50,12 +50,8 @@ public class TrackPathManager : MonoBehaviour
     public void DemoAnimation()
     {
         if(!Application.isPlaying) { return; }
-        for (int i = 0; i < targets.Count(); i++)
-        {
-            GameObject target = targets[i];
-            target.transform.position = targetPositions[i];
-        }
 
+        // Step one: build the track waypoints
         List<Vector3> waypoints = new List<Vector3>();
         foreach (Track track in tracks) {
             // Todo: this is crazy fucking slow my dudes lol
@@ -64,10 +60,19 @@ public class TrackPathManager : MonoBehaviour
             waypoints = new List<Vector3>(waypoints.Concat(newWaypoints));
         }
 
-        const float speed = 1f;
+        // Step two: find the train cars that need to follow this path
+        targets.Clear();
+        foreach(TrainCar car in targetTrain.cars)
+        {
+            targets.Add(car.gameObject);
+        }
 
+        const float speed = 0.8f;
+
+        // Step three: set up tweening animations for each train car, offset by the train car's offset from the train car leader
         var leaderPosition = targets[0].transform.position;
         var tailPosition = targets[targets.Count() - 1].transform.position;
+        activePaths.Clear();
         for (int i = 0; i < targets.Count(); i++)
         {
             GameObject target = targets[i];
@@ -85,13 +90,16 @@ public class TrackPathManager : MonoBehaviour
             waypoints[waypoints.Count() - 1] += endingDirectionVector * offsetFromTail;
 
             target.transform.position = waypoints[0];
-            var result = target.transform.DOPath(waypoints.ToArray(), (1/speed) * tracks.Count(), PathType.CatmullRom, PathMode.Sidescroller2D);
+            var result = target.transform.DOPath(waypoints.ToArray(), 2, PathType.CatmullRom, PathMode.TopDown2D);
 
             waypoints[0] = cachedStart;
             waypoints[waypoints.Count() - 1] = cachedEnd;
             
             result.SetLookAt(.01f, true);
             result.SetEase(Ease.InOutQuad);
+            result.SetSpeedBased();
+
+            activePaths.Add(result);
         }
     }
 
@@ -102,8 +110,16 @@ public class TrackPathManager : MonoBehaviour
     }
 
     // Update is called once per frame
+    float timeScale = 1.0f;
     void Update()
     {
-        
+        if (activePaths.Count() > 0)
+        {
+            //timeScale -= (0.1f * Time.deltaTime);
+            //foreach(var path in activePaths)
+            //{
+            //    path.timeScale = timeScale;
+            //}
+        }
     }
 }
