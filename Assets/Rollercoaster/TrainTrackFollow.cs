@@ -49,9 +49,7 @@ public class TrainTrackFollow : MonoBehaviour
         {
             targets.Add(car.gameObject);
         }
-
-        const float speed = 0.8f;
-
+        
         // Step three: set up tweening animations for each train car, offset by the train car's offset from the train car leader
         var leaderPosition = targets[0].transform.position;
         var tailPosition = targets[targets.Count() - 1].transform.position;
@@ -81,10 +79,13 @@ public class TrainTrackFollow : MonoBehaviour
             result.SetLookAt(.01f, true);
             result.SetEase(Ease.InOutQuad);
             result.SetSpeedBased();
+            result.SetAutoKill();
             result.timeScale = _speed;
 
             activePaths.Add(result);
         }
+        
+        activePaths.First().OnComplete<Tween>(() => { targetTrain.onTrack = false; } );
     }
 
     // Start is called before the first frame update

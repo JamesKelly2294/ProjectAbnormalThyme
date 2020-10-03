@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 974436623366152517}
   - component: {fileID: 974436623366152516}
   - component: {fileID: 426167931246667592}
-  - component: {fileID: 8041570955295233683}
+  - component: {fileID: 3579053575976058415}
   m_Layer: 0
   m_Name: Loop
   m_TagString: Untagged
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
---- !u!50 &8041570955295233683
+--- !u!50 &3579053575976058415
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -188,5 +188,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3de7ecb3bb5724f8bdd2bba712e01a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fixedCost: 0
+  oneShot: 0
   excitement: 1

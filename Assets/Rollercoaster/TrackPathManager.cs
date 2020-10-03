@@ -1,11 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using System.Linq;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
-using DG.Tweening.Plugins.Core.PathCore;
 
 public class TrackPathManager : MonoBehaviour
 {

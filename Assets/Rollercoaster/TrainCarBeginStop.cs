@@ -24,6 +24,9 @@ public class TrainCarBeginStop : MonoBehaviour
             Train train = trainCar.train;
             if(train.onTrack) { return; }
             train.onTrack = true;
+
+            TrainTrackFollow trackFollow = train.GetComponent<TrainTrackFollow>();
+            trackFollow.speed = 0;
         }
     }
 }
