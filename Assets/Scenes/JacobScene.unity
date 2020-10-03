@@ -621,15 +621,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Train
       objectReference: {fileID: 0}
+    - target: {fileID: 2805213164322088690, guid: 7790f35674de4fd4299869353dcdfab2,
+        type: 3}
+      propertyPath: numberOfCars
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805213164322088690, guid: 7790f35674de4fd4299869353dcdfab2,
+        type: 3}
+      propertyPath: carWidth
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805213164322088690, guid: 7790f35674de4fd4299869353dcdfab2,
+        type: 3}
+      propertyPath: frontCarWidth
+      value: 0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 6279540299107410699, guid: 7790f35674de4fd4299869353dcdfab2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.517
+      value: -0.514
       objectReference: {fileID: 0}
     - target: {fileID: 6279540299107410699, guid: 7790f35674de4fd4299869353dcdfab2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.36
+      value: -0.335
       objectReference: {fileID: 0}
     - target: {fileID: 6279540299107410699, guid: 7790f35674de4fd4299869353dcdfab2,
         type: 3}

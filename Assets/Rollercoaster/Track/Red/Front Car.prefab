@@ -95,11 +95,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   people: []
-  personPrefab: {fileID: 3270097275694417230, guid: dffb7deac2d55b6418d8c2f58b7eb21f,
-    type: 3}
   peopleXPositions:
   - 0.06
   - 0.01
   - -0.04
   - -0.09
   peopleYPosition: 0.06
+  allowedPeople: 4

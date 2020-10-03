@@ -7,8 +7,6 @@ public class TrainCar : MonoBehaviour
 
     public List<TrainCarPerson> people;
 
-    public TrainCarPerson personPrefab;
-
     public List<float> peopleXPositions;
     public float peopleYPosition;
 
@@ -22,5 +20,17 @@ public class TrainCar : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public bool Add(TrainCarPerson person)
+    {
+
+        if (people.Count >= peopleXPositions.Count) { return false; }
+
+        person.transform.parent = transform;
+        person.transform.localPosition = new Vector3(peopleXPositions[people.Count], peopleYPosition, 0);
+        people.Add(person);
+
+        return true;
     }
 }

@@ -9,12 +9,15 @@ public class Train : MonoBehaviour
 
     public TrainCar carPrefab;
     public TrainCar frontCarPrefab;
+    public TrainCarPerson personPrefab;
 
     public float carWidth;
 
     public float frontCarWidth;
 
     public int numberOfCars;
+
+    public int numberOfPeople;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,13 @@ public class Train : MonoBehaviour
             car.transform.localPosition = offset;
             offset -= new Vector3(xoffset, 0, 0);
 
+            while ( numberOfPeople > 0 ) {
+                TrainCarPerson person = Instantiate(personPrefab);
+                if (!car.Add(person)) { DestroyImmediate(person.gameObject); break; }
+                numberOfPeople -= 1;
+            }
+
+            cars.Add(car);
 
         }
 
