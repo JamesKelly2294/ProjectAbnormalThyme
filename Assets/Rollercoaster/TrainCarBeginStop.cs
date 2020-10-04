@@ -22,9 +22,10 @@ public class TrainCarBeginStop : MonoBehaviour
         if (trainCar != null)
         {
             Train train = trainCar.Train;
-            train.brakingPower = 10;
-            train.isBrakingFullStop = true;
-            train.isWaiting = true;
+            train.BrakeFullStopWithCallback((t) =>
+            {
+                train.isWaiting = true;
+            });
         }
     }
 }

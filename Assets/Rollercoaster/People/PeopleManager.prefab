@@ -47,9 +47,10 @@ MonoBehaviour:
   wealthMultiplier: 1
   walletSizeMultiplier: 1
   lineAcceptanceRate: 1
+  newPeopleMultiplier: 1
   t: 0
-  chanceOfPurpleSpender: 0.001
-  chanceOfBlueSpender: 0.01
-  chanceOFRedSpender: 0.1
+  chanceOfPurpleSpender: 0
+  chanceOfBlueSpender: 0
+  chanceOfRedSpender: 0
   personPrefab: {fileID: -8646991426217491894, guid: 737a110f8151bfe46acaea665a66c4d9,
     type: 3}

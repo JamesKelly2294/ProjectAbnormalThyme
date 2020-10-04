@@ -73,7 +73,8 @@ public class TrainManager : MonoBehaviour
         {
             GameObject newIdleTrainGO = Instantiate(trainPrefab);
             idleTrain = newIdleTrainGO.GetComponent<Train>();
-            idleTrain.numberOfPeople = Mathf.Min(4 * idleTrain.numberOfCars, passengerQueueLength);
+            idleTrain.numberOfCars = 1;
+            idleTrain.numberOfPeople = Mathf.Min(idleTrain.maxPeoplePerCar * idleTrain.numberOfCars, passengerQueueLength);
             idleTrain.Initialize();
             idleTrain.LoadTrain();
             idleTrain.GetComponent<TrainTrackFollow>().PullUpToStart();
@@ -101,9 +102,9 @@ public class TrainManager : MonoBehaviour
     
     public void SendNewTrain()
     {
-        if(idleTrain && !IsTrackFull())
+        if (idleTrain && !IsTrackFull())
         {
-            idleTrain.isBrakingFullStop = false;
+            idleTrain.IsBrakingFullStop = false;
             idleTrain.targetSpeed = 2.0f;
             idleTrain.brakingPower = 0.0f;
 

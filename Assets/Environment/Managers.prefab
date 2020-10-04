@@ -101,6 +101,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3991827843850083197, guid: 954c58ecb1c03cf4dad1129e90c9603c,
+        type: 3}
+      propertyPath: currentBalance
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 954c58ecb1c03cf4dad1129e90c9603c, type: 3}
 --- !u!4 &3511142998611127056 stripped
@@ -246,6 +251,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7237228714920888875, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: newPeopleMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7237228714920888875, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: lineAcceptanceRate
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8694864433978458871, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
         type: 3}
       propertyPath: m_Name
@@ -320,6 +335,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745428871068302684, guid: eb1edce372bc9fe40b3e7b638739aad4,
+        type: 3}
+      propertyPath: idleTrainCapacity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745428871068302684, guid: eb1edce372bc9fe40b3e7b638739aad4,
+        type: 3}
+      propertyPath: idleTrainLength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745428871068302684, guid: eb1edce372bc9fe40b3e7b638739aad4,
+        type: 3}
+      propertyPath: newTrainInterval
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8567282302986352959, guid: eb1edce372bc9fe40b3e7b638739aad4,
         type: 3}

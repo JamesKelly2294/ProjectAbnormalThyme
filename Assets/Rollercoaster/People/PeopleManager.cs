@@ -19,7 +19,7 @@ public class PeopleManager : MonoBehaviour
 
     public float chanceOfBlueSpender = 0.1f;
 
-    public float chanceOFRedSpender = 0.1f;
+    public float chanceOfRedSpender = 0.1f;
 
     public TrainCarPerson personPrefab;
 
@@ -36,7 +36,7 @@ public class PeopleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        AddPersonToLine();
     }
 
     // Update is called once per frame
@@ -87,7 +87,7 @@ public class PeopleManager : MonoBehaviour
             return SpenderType.purple;
         } else if ( Random.Range(0, (int)(1f / chanceOfBlueSpender)) == 0 ) {
             return SpenderType.blue;
-        } else if ( Random.Range(0, (int)(1f / chanceOFRedSpender)) == 0 ) {
+        } else if ( Random.Range(0, (int)(1f / chanceOfRedSpender)) == 0 ) {
             return SpenderType.red;
         } else {
             return SpenderType.green;
@@ -99,7 +99,7 @@ public class PeopleManager : MonoBehaviour
         int money = 0;
         switch (type) {
             case SpenderType.green:
-                money = Random.Range(20, 200); break;
+                money = Random.Range(1, 10); break;
             case SpenderType.red:
                 money = Random.Range(200, 500); break;
             case SpenderType.blue:

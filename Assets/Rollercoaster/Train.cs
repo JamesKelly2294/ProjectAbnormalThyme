@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Train : MonoBehaviour
 {
+    public delegate void TrainDelegate(Train t);
 
     public List<TrainCar> cars;
 
@@ -34,12 +35,14 @@ public class Train : MonoBehaviour
     [Range(0, 10)]
     public float minimumSpeed = 1;
 
+    public int maxPeoplePerCar = 4;
+
     public int numberOfCars;
 
     public int numberOfPeople;
 
     public bool onTrack;
-    public bool isBrakingFullStop;
+    public bool IsBrakingFullStop { get; set; }
     public bool isWaiting;
     public bool initOnAwake;
 
@@ -89,9 +92,14 @@ public class Train : MonoBehaviour
         float trueTargetSpeed = Mathf.Max(Mathf.Min(targetSpeed, maxSpeed), -maxSpeed);
         if (brakingPower > 0)
         {
-            if (isBrakingFullStop)
+            if (IsBrakingFullStop)
             {
                 Speed = Mathf.Max(Mathf.Min(Speed, trueTargetSpeed), 0);
+                if (Speed == 0)
+                {
+                    _activeDel?.Invoke(this);
+                    _activeDel = null;
+                }
             } else
             {
                 Speed = Mathf.Max(Mathf.Min(Speed, trueTargetSpeed), minimumSpeed);
@@ -116,5 +124,13 @@ public class Train : MonoBehaviour
                 }
             }
         }
+    }
+
+    TrainDelegate _activeDel;
+    public void BrakeFullStopWithCallback(TrainDelegate del)
+    {
+        brakingPower = 10;
+        IsBrakingFullStop = true;
+        _activeDel = del;
     }
 }

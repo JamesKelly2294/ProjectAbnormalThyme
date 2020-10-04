@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2775772224581141265}
   - component: {fileID: 2775772224581141486}
   - component: {fileID: 2775772224581141484}
+  - component: {fileID: 5145300295321254672}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -83,6 +84,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2775772224581141485}
   m_Enabled: 1
+--- !u!114 &5145300295321254672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2775772224581141485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb4cf6d4895da84ea218f97177a1560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  maxDistance: 9.5
 --- !u!1 &5646529075378023803
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,11 +192,6 @@ PrefabInstance:
     - target: {fileID: 2741520391230912759, guid: 18b457112fe9e924fa1f14da9f11c4b1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3735421645026191878, guid: 18b457112fe9e924fa1f14da9f11c4b1,
-        type: 3}
-      propertyPath: idleTrainLength
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5824674299614681390, guid: 18b457112fe9e924fa1f14da9f11c4b1,
