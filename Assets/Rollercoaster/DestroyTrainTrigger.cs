@@ -25,7 +25,7 @@ public class DestroyTrainTrigger : MonoBehaviour
         if (trainCar != null)
         {
             OnDestroyOldestTrain.Invoke();
-            Destroy(trainCar.Train);
+            Destroy(trainCar.Train.gameObject);
         }
     }
 }
