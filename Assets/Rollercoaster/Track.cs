@@ -8,7 +8,8 @@ public enum TrackType
     Straight,
     Start,
     End,
-    Photo
+    Photo,
+    Bank
 }
 
 public class Track : MonoBehaviour

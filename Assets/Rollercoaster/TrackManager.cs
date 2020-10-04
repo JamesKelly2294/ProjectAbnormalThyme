@@ -33,7 +33,9 @@ public class TrackManager : MonoBehaviour
     {
         if (!Tracks.Contains(track))
         {
-            Tracks.Add(track);
+            for (int i = 0; i < track.Width; i++) {
+                Tracks.Add(track);
+            }
             Tracks.Sort((a, b) => (a.transform.position.x.CompareTo(b.transform.position.x)));
         }
     }
@@ -42,7 +44,7 @@ public class TrackManager : MonoBehaviour
     {
         if (Tracks.Contains(track))
         {
-            Tracks.Remove(track);
+            Tracks.RemoveAll((t) => t == track);
         }
     }
 }
