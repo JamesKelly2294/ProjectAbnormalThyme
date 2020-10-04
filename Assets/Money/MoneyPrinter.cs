@@ -16,13 +16,14 @@ public class MoneyPrinter : MonoBehaviour
 
     public float excitement = 0; // A modifier on dispenseTime
 
-
+    private MoneyManager moneyManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
         t = dispenseTime; // Makes it so that we dispense as soon as we hit the first spot.
+        moneyManager = FindObjectOfType<MoneyManager>();
     }
 
     // Update is called once per frame
@@ -54,6 +55,12 @@ public class MoneyPrinter : MonoBehaviour
         } else {
             return 0;
         }
+
+
+        if (moneyManager != null) {
+            moneyManager.AddIncome(moneyPrefab.value);
+        }
+
 
         Money instance = Instantiate(moneyPrefab);
         instance.t = Random.Range(0, instance.animationTime);
