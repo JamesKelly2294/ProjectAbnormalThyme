@@ -30,7 +30,6 @@ public class StartTrack : MonoBehaviour
     }
 
     // Update is called once per frame
-    private float time = 0;
     void Update()
     {
         StartTrackLight newLightState;
@@ -67,7 +66,6 @@ public class StartTrack : MonoBehaviour
                     popupLightRenderer.gameObject.SetActive(false);
                     break;
             }
-            time = 0;
         }
     }
 }

@@ -106,9 +106,10 @@ public class Train : MonoBehaviour
         foreach(var car in cars)
         {
             while ( numberOfPeople > 0 ) {
-                TrainCarPerson person = peopleManager.PopPersonFromLine();
+                TrainCarPerson person = peopleManager.PeekPersonInLine();
                 if (person != null) {
-                    if (!car.Add(person)) { DestroyImmediate(person.gameObject); break; }
+                    if (!car.Add(person)) { break; }
+                    peopleManager.PopPersonFromLine();
                     numberOfPeople -= 1;
                 } else {
                     break;

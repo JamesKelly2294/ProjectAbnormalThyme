@@ -12,6 +12,7 @@ public class PeopleManager : MonoBehaviour
     public float walletSizeMultiplier = 1.0f;
 
     public float lineAcceptanceRate = 1f; // How often we check for new people to join the line
+    public int newPeopleMultiplier = 1; // How many people actually join the line when the timer is up
     public float t = 0;
 
     public float chanceOfPurpleSpender = 0.1f;
@@ -44,8 +45,11 @@ public class PeopleManager : MonoBehaviour
         t += Time.deltaTime;
         if (t > lineAcceptanceRate) {
             t -= lineAcceptanceRate;
-
-            AddPersonToLine();
+            
+            for(int i = 0; i < newPeopleMultiplier; i++)
+            {
+                AddPersonToLine();
+            }
         }
     }
 
@@ -62,13 +66,20 @@ public class PeopleManager : MonoBehaviour
         peopleInLine.AddLast(person);
     }
 
-    public TrainCarPerson PopPersonFromLine() {
+    public TrainCarPerson PeekPersonInLine() {
+        if (peopleInLine.Count == 0) { return null; }
+
+        return peopleInLine.Last.Value;
+    }
+
+    public TrainCarPerson PopPersonFromLine()
+    {
         if (peopleInLine.Count == 0) { return null; }
 
         TrainCarPerson person = peopleInLine.Last.Value;
         person.gameObject.SetActive(true);
         peopleInLine.RemoveLast();
-        return  person;
+        return person;
     }
 
     SpenderType SpenderTypeOfNextPersonInLine() {

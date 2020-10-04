@@ -24,17 +24,22 @@ public class TrainManager : MonoBehaviour
     bool isIdleTrainWaiting;
     Train idleTrain;
 
-    [Header("Passenger Queue")]
-    public int passengerQueueCapacity = 5;
-    public int passengerQueueLength = 1;
-    public int newPassengerMultiplier = 1;
-    public float newPassengerInterval = 5;
-    float newPassengerTimer;
+    public int passengerQueueCapacity
+    {
+        get { return peopleManager.maxLineLength; }
+    }
+    public int passengerQueueLength
+    {
+        get { return peopleManager.peopleInLine.Count; }
+    }
+
+    PeopleManager peopleManager;
 
     // Start is called before the first frame update
     void Start()
     {
         newTrainTimer = newTrainInterval - 1;
+        peopleManager = GameObject.Find("PeopleManager").GetComponent<PeopleManager>();
     }
 
     // Update is called once per frame
@@ -42,7 +47,6 @@ public class TrainManager : MonoBehaviour
     {
         UpdateActiveTrains();
         UpdateIdleTrainQueue();
-        UpdatePassengerQueue();
     }
 
     void UpdateActiveTrains()
@@ -70,21 +74,9 @@ public class TrainManager : MonoBehaviour
             GameObject newIdleTrainGO = Instantiate(trainPrefab);
             idleTrain = newIdleTrainGO.GetComponent<Train>();
             idleTrain.numberOfPeople = Mathf.Min(4 * idleTrain.numberOfCars, passengerQueueLength);
-            passengerQueueLength -= idleTrain.numberOfPeople;
             idleTrain.Initialize();
             idleTrain.LoadTrain();
             idleTrain.GetComponent<TrainTrackFollow>().PullUpToStart();
-        }
-    }
-
-    void UpdatePassengerQueue()
-    {
-        newPassengerTimer += Time.deltaTime;
-        if (newPassengerTimer > newPassengerInterval)
-        {
-            newPassengerTimer = 0;
-            passengerQueueLength += 1 * newPassengerMultiplier;
-            passengerQueueLength = Mathf.Clamp(passengerQueueLength, 0, passengerQueueCapacity);
         }
     }
 
