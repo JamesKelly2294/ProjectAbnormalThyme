@@ -30,7 +30,7 @@ public class MoneyPrinter : MonoBehaviour
     {
         t += Time.deltaTime * excitement;
         if ( t > dispenseTime ) {
-            t -= dispenseTime;
+            t = 0; // We are deliberatly throwing away history here as we don't want to build up an insane demand for bills, and spend them at the bank....
 
             DispenseABill();
         } 

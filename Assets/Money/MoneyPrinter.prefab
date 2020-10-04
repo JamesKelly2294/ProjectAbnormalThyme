@@ -51,5 +51,6 @@ MonoBehaviour:
     type: 3}
   purpleMoneyPrefab: {fileID: 2263735941772358957, guid: bc96d87e2f5291e4f9efda078123b8cf,
     type: 3}
-  moneyToDispense: 1342
+  moneyToDispense: 0
   dispenseTime: 0.2
+  excitement: 0

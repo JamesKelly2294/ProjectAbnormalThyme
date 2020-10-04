@@ -96,6 +96,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyPrinter: {fileID: 4308468783383623536}
+  desriedMoneyInWallet: 0
+  moneyInBank: 0
+  minPossibleDesriedMoneyInWallet: 100
+  maxPossibleDesriedMoneyInWallet: 1000
+  minPossibleMoneyInBank: 1000
+  maxPossibleMoneyInBank: 100000
 --- !u!1001 &3181500036627329036
 PrefabInstance:
   m_ObjectHideFlags: 0
