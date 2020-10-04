@@ -43,21 +43,28 @@ public class PeopleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        t += Time.deltaTime;
         if (t > lineAcceptanceRate) {
-            t -= lineAcceptanceRate;
-            
+
+            bool addedPeople = false;
             for(int i = 0; i < newPeopleMultiplier; i++)
             {
-                AddPersonToLine();
+                addedPeople |= AddPersonToLine();
             }
+
+            if(addedPeople)
+            {
+                t -= lineAcceptanceRate;
+            }
+        } else
+        {
+            t += Time.deltaTime;
         }
 
         peopleProgressBar?.SetValue(t / lineAcceptanceRate);
     }
 
-    void AddPersonToLine() {
-        if (peopleInLine.Count >= maxLineLength) { return; }
+    bool AddPersonToLine() {
+        if (peopleInLine.Count >= maxLineLength) { return false; }
         SpenderType nextPersonSpenderType = SpenderTypeOfNextPersonInLine();
 
         TrainCarPerson person = Instantiate(personPrefab, transform);
@@ -67,6 +74,7 @@ public class PeopleManager : MonoBehaviour
         person.gameObject.SetActive(false);
 
         peopleInLine.AddLast(person);
+        return true;
     }
 
     public TrainCarPerson PeekPersonInLine() {

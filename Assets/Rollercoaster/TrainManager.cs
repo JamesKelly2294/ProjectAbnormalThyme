@@ -61,12 +61,18 @@ public class TrainManager : MonoBehaviour
 
     void UpdateIdleTrainQueue()
     {
-        newTrainTimer += Time.deltaTime;
         if (newTrainTimer > newTrainInterval)
         {
-            newTrainTimer = 0;
-            idleTrainLength += 1 * newTrainMultiplier;
-            idleTrainLength = Mathf.Clamp(idleTrainLength, 0, idleTrainCapacity);
+            if (idleTrainLength < idleTrainCapacity)
+            {
+
+                newTrainTimer = 0;
+                idleTrainLength += 1 * newTrainMultiplier;
+                idleTrainLength = Mathf.Clamp(idleTrainLength, 0, idleTrainCapacity);
+            }
+        } else
+        {
+            newTrainTimer += Time.deltaTime;
         }
 
         SpawnIdleTrain();
