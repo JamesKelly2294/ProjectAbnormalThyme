@@ -24,13 +24,25 @@ public class Track : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        TrackPathManager.Instance.RegisterTrack(this);
+        TrackManager.Instance.RegisterTrack(this);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public int Width
+    {
+        get
+        {
+            switch (type)
+            {
+                default:
+                    return 1;
+            }
+        }
     }
 
     public Vector3[] LocalWaypoints()

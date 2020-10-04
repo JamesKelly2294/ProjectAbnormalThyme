@@ -17,7 +17,7 @@ public class TrainTrackFollow : MonoBehaviour
 
     private List<Track> Tracks
     {
-        get { return TrackPathManager.Instance.Tracks; }
+        get { return TrackManager.Instance.Tracks; }
     }
 
     private float _speed;
