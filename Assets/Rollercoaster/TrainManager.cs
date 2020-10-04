@@ -102,7 +102,7 @@ public class TrainManager : MonoBehaviour
     
     public void SendNewTrain()
     {
-        if (idleTrain && !IsTrackFull())
+        if (idleTrain && !IsTrackFull() && idleTrain.isWaiting)
         {
             idleTrain.IsBrakingFullStop = false;
             idleTrain.targetSpeed = 2.0f;
