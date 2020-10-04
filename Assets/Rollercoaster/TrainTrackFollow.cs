@@ -27,7 +27,7 @@ public class TrainTrackFollow : MonoBehaviour
         activePaths = new List<TweenerCore<Vector3, Path, PathOptions>>();
     }
 
-    public void DemoAnimation()
+    public void PullUpToStart()
     {
         if (!Application.isPlaying) { return; }
 

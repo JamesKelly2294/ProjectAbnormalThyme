@@ -43,3 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd08905f6271974eafd05ef6cb8a4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainPrefab: {fileID: 2631912485352940545, guid: 7790f35674de4fd4299869353dcdfab2,
+    type: 3}
+  trains: []
+  activeTrains: []
+  activeTrainCapacity: 1
+  activeTrainLength: 0
+  idleTrainCapacity: 2
+  idleTrainLength: 1
+  newTrainMultiplier: 1
+  newTrainInterval: 10
+  passengerQueueCapacity: 5
+  passengerQueueLength: 1
+  newPassengerMultiplier: 1
+  newPassengerInterval: 5

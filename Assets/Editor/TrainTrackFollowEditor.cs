@@ -11,7 +11,7 @@ public class TrainTrackFollowEditor : Editor
         TrainTrackFollow myScript = (TrainTrackFollow)target;
         if (GUILayout.Button("Demo Animation"))
         {
-            myScript.DemoAnimation();
+            myScript.PullUpToStart();
         }
         if (GUILayout.Button("Go bitch, GO!"))
         {

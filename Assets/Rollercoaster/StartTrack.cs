@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum StartTrackLight
 {
+    Unknown = -1,
     Green = 0,
     Orange,
     Red
@@ -18,39 +19,53 @@ public class StartTrack : MonoBehaviour
     public Sprite orangeLightSprite;
     public Sprite redLightSprite;
 
-    StartTrackLight trackLight = StartTrackLight.Green;
+    private TrainManager trainManager;
+
+    StartTrackLight trackLight = StartTrackLight.Unknown;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        trainManager = GameObject.Find("TrainManager").GetComponent<TrainManager>();
     }
 
     // Update is called once per frame
     private float time = 0;
     void Update()
     {
-        time += Time.deltaTime;
-
-        if (time > 1.0f)
+        StartTrackLight newLightState;
+        if (!trainManager.CanTrackAcceptNewTrain() || !trainManager.IsIdleTrainWaiting())
         {
-            switch(trackLight)
+            newLightState = StartTrackLight.Orange;
+        } else if (trainManager.IsTrackFull())
+        {
+            newLightState = StartTrackLight.Red;
+        } else
+        {
+            newLightState = StartTrackLight.Green;
+        }
+
+        if (newLightState != trackLight)
+        {
+            trackLight = newLightState;
+            switch (trackLight)
             {
                 case StartTrackLight.Green:
-                    lightRenderer.sprite = orangeLightSprite;
-                    trackLight = StartTrackLight.Orange;
-                    popupLightRenderer.gameObject.SetActive(false);
-                    break;
-                case StartTrackLight.Orange:
-                    lightRenderer.sprite = redLightSprite;
-                    trackLight = StartTrackLight.Red;
-                    break;
-                case StartTrackLight.Red:
                     lightRenderer.sprite = greenLightSprite;
-                    trackLight = StartTrackLight.Green;
                     popupLightRenderer.gameObject.SetActive(true);
                     break;
-                default: break;
+                case StartTrackLight.Orange:
+                    lightRenderer.sprite = orangeLightSprite;
+                    popupLightRenderer.gameObject.SetActive(false);
+                    break;
+                case StartTrackLight.Red:
+                    lightRenderer.sprite = redLightSprite;
+                    popupLightRenderer.gameObject.SetActive(false);
+                    break;
+                default:
+                    lightRenderer.sprite = null;
+                    popupLightRenderer.gameObject.SetActive(false);
+                    break;
             }
             time = 0;
         }

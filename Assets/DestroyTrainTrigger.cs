@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class TrainCarBeginStop : MonoBehaviour
+public class DestroyTrainTrigger : MonoBehaviour
 {
+    public UnityEvent OnDestroyOldestTrain;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +24,8 @@ public class TrainCarBeginStop : MonoBehaviour
         TrainCarFront trainCar = other.gameObject.GetComponent<TrainCarFront>();
         if (trainCar != null)
         {
-            Train train = trainCar.Train;
-            train.brakingPower = 10;
-            train.isBrakingFullStop = true;
-            train.isWaiting = true;
+            OnDestroyOldestTrain.Invoke();
+            Destroy(trainCar.Train);
         }
     }
 }
