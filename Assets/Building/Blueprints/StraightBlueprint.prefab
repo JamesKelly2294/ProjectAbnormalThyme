@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  isBlueprint: 1
 --- !u!1001 &5658166787517703816
 PrefabInstance:
   m_ObjectHideFlags: 0

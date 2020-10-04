@@ -50,6 +50,9 @@ TagManager:
   - name: Underground
     uniqueID: 1321603101
     locked: 0
+  - name: Building Placement
+    uniqueID: 754828741
+    locked: 0
   - name: Upgrade UI
     uniqueID: 135995501
     locked: 0

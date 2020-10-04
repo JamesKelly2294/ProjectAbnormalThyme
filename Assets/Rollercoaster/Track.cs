@@ -15,6 +15,7 @@ public enum TrackType
 public class Track : MonoBehaviour
 {
     public TrackType type;
+    public bool isBlueprint;
 
     static Vector3[] localLoopWaypoints = new[] { new Vector3(-0.45f, -0.3367424f, 0f), new Vector3(-0.3128065f, -0.340954f, 0f), new Vector3(-0.2208815f, -0.3195973f, 0f), new Vector3(-0.05060089f, -0.2290567f, 0f), new Vector3(0.1157227f, -0.09050867f, 0f), new Vector3(0.2168044f, 0.05065752f, 0f), new Vector3(0.2486197f, 0.2162478f, 0f), new Vector3(0.1872462f, 0.3406396f, 0f), new Vector3(0.07577837f, 0.429786f, 0f), new Vector3(-0.0949018f, 0.4404377f, 0f), new Vector3(-0.2326232f, 0.3434279f, 0f), new Vector3(-0.2872765f, 0.249081f, 0f), new Vector3(-0.2900648f, 0.1055469f, 0f), new Vector3(-0.1779549f, -0.0652881f, 0f), new Vector3(0.00666678f, -0.240903f, 0f), new Vector3(0.229753f, -0.3267424f, 0f), new Vector3(0.45f, -0.3367424f, 0f) };
     static Vector3[] localStraightWaypoints = new[] { new Vector3(-0.45f, -0.3367424f, 0f), new Vector3(0.0f, -0.3367424f, 0f) };
@@ -25,7 +26,17 @@ public class Track : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        TrackManager.Instance.RegisterTrack(this);
+        if (!isBlueprint)
+        {
+            TrackManager.Instance.RegisterTrack(this);
+        } else
+        {
+            var srs = GetComponentsInChildren<SpriteRenderer>();
+            for (int i = 0; i < srs.Length; i++)
+            {
+                srs[i].sortingLayerName = "Building Placement";
+            }
+        }
     }
 
     // Update is called once per frame
