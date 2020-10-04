@@ -23,7 +23,7 @@ public class PeopleManager : MonoBehaviour
 
     public TrainCarPerson personPrefab;
 
-
+    public GUIProgressBar peopleProgressBar;
 
 
 
@@ -36,6 +36,7 @@ public class PeopleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        peopleProgressBar = GameObject.Find("PeopleProgressBar")?.GetComponent<GUIProgressBar>();
         AddPersonToLine();
     }
 
@@ -51,6 +52,8 @@ public class PeopleManager : MonoBehaviour
                 AddPersonToLine();
             }
         }
+
+        peopleProgressBar?.SetValue(t / lineAcceptanceRate);
     }
 
     void AddPersonToLine() {

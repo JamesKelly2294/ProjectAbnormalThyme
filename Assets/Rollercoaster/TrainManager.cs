@@ -35,11 +35,14 @@ public class TrainManager : MonoBehaviour
 
     PeopleManager peopleManager;
 
+    GUIProgressBar idleTrainProgressBar;
+
     // Start is called before the first frame update
     void Start()
     {
         newTrainTimer = newTrainInterval - 1;
-        peopleManager = GameObject.Find("PeopleManager").GetComponent<PeopleManager>();
+        peopleManager = GameObject.Find("PeopleManager")?.GetComponent<PeopleManager>();
+        idleTrainProgressBar = GameObject.Find("IdleTrainProgressBar")?.GetComponent<GUIProgressBar>();
     }
 
     // Update is called once per frame
@@ -47,6 +50,8 @@ public class TrainManager : MonoBehaviour
     {
         UpdateActiveTrains();
         UpdateIdleTrainQueue();
+
+        idleTrainProgressBar?.SetValue(newTrainTimer / newTrainInterval);
     }
 
     void UpdateActiveTrains()
