@@ -20,7 +20,7 @@ public class TrainManager : MonoBehaviour
     public int idleTrainLength = 1;
     public int newTrainMultiplier = 1;
     public float newTrainInterval = 10;
-    float newTrainTimer;
+    float newTrainTimer = 0;
     bool isIdleTrainWaiting;
     Train idleTrain;
 
@@ -34,7 +34,7 @@ public class TrainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnIdleTrain();
+        newTrainTimer = newTrainInterval - 1;
     }
 
     // Update is called once per frame
@@ -72,6 +72,7 @@ public class TrainManager : MonoBehaviour
             idleTrain.numberOfPeople = Mathf.Min(4 * idleTrain.numberOfCars, passengerQueueLength);
             passengerQueueLength -= idleTrain.numberOfPeople;
             idleTrain.Initialize();
+            idleTrain.LoadTrain();
             idleTrain.GetComponent<TrainTrackFollow>().PullUpToStart();
         }
     }

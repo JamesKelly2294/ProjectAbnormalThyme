@@ -75,13 +75,6 @@ public class Train : MonoBehaviour
             car.train = this;
             car.transform.localPosition = offset;
             offset -= new Vector3(xoffset, 0, 0);
-
-            while (numberOfPeople > 0)
-            {
-                TrainCarPerson person = Instantiate(personPrefab);
-                if (!car.Add(person)) { DestroyImmediate(person.gameObject); break; }
-                numberOfPeople -= 1;
-            }
            
             cars.Add(car);
         }
@@ -109,7 +102,7 @@ public class Train : MonoBehaviour
         }
     }
 
-    void LoadTrain() {
+    public void LoadTrain() {
         foreach(var car in cars)
         {
             while ( numberOfPeople > 0 ) {
