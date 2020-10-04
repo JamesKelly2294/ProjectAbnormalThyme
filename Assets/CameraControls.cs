@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraControls : MonoBehaviour
 {
     public float speed = 2.0f;
+    public float minDistance = 0;
     public float maxDistance = 9.5f;
 
     // Start is called before the first frame update
@@ -22,7 +23,7 @@ public class CameraControls : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position = new Vector3(Mathf.Max(-(speed * Time.deltaTime) + transform.position.x, -maxDistance), transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.Max(-(speed * Time.deltaTime) + transform.position.x, minDistance), transform.position.y, transform.position.z);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
