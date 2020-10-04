@@ -18,18 +18,13 @@ public class TrainCarApplyBrakes : MonoBehaviour
 
     [Range(0, 100)]
     public float brakingPower = 5.0f;
-
-    private HashSet<Train> _affectedTrains = new HashSet<Train>();
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        TrainCar trainCar = other.gameObject.GetComponent<TrainCar>();
+        TrainCarFront trainCar = other.gameObject.GetComponent<TrainCarFront>();
         if (trainCar != null)
         {
-            Train train = trainCar.train;
-            if (_affectedTrains.Contains(train)) { return; }
-            _affectedTrains.Add(train);
-            train.brakingPower = brakingPower;
+            trainCar.Train.brakingPower = brakingPower;
         }
     }
 }

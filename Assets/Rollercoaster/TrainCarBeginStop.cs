@@ -16,16 +16,12 @@ public class TrainCarBeginStop : MonoBehaviour
         
     }
 
-    private HashSet<Train> _affectedTrains = new HashSet<Train>();
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        TrainCar trainCar = other.gameObject.GetComponent<TrainCar>();
+        TrainCarFront trainCar = other.gameObject.GetComponent<TrainCarFront>();
         if (trainCar != null)
         {
-            Train train = trainCar.train;
-            if (_affectedTrains.Contains(train)) { return; }
-            _affectedTrains.Add(train);
+            Train train = trainCar.Train;
             train.brakingPower = 10;
             train.isBrakingFullStop = true;
         }

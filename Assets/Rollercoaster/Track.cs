@@ -22,7 +22,7 @@ public class Track : MonoBehaviour
     static Vector3[] localPhotowaypoints = new[] { new Vector3(-0.4955589f, -0.3367424f, 0f), new Vector3(-0.4592333f, -0.3367424f, 0f), new Vector3(-0.4180574f, -0.3148686f, 0f), new Vector3(-0.3752416f, -0.2752753f, 0f), new Vector3(-0.3368182f, -0.2106752f, 0f), new Vector3(-0.3228085f, -0.1600355f, 0f), new Vector3(-0.3096237f, -0.1123323f, 0f), new Vector3(-0.2707767f, -0.06280746f, 0f), new Vector3(-0.2014357f, -0.03104913f, 0f), new Vector3(-0.1044894f, -0.05188359f, 0f), new Vector3(0.08525414f, -0.226547f, 0f), new Vector3(0.2575977f, -0.3188751f, 0f), new Vector3(0.4051979f, -0.3367424f, 0f), new Vector3(0.493552f, -0.3367424f, 0f) };
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         TrackPathManager.Instance.RegisterTrack(this);
     }

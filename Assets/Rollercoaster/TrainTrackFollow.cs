@@ -85,7 +85,9 @@ public class TrainTrackFollow : MonoBehaviour
             activePaths.Add(result);
         }
         
-        activePaths.First().OnComplete<Tween>(() => { targetTrain.onTrack = false; } );
+        activePaths.First().OnComplete<Tween>(() => {
+            targetTrain.onTrack = false;
+        } );
     }
 
     // Start is called before the first frame update
