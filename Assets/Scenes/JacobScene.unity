@@ -839,7 +839,12 @@ PrefabInstance:
     - target: {fileID: 2805213164322088690, guid: 7790f35674de4fd4299869353dcdfab2,
         type: 3}
       propertyPath: numberOfPeople
-      value: 7
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805213164322088690, guid: 7790f35674de4fd4299869353dcdfab2,
+        type: 3}
+      propertyPath: numberOfCars
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6279540299107410699, guid: 7790f35674de4fd4299869353dcdfab2,
         type: 3}
@@ -898,3 +903,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7790f35674de4fd4299869353dcdfab2, type: 3}
+--- !u!1001 &7343230105184504803
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.4812183
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.23734197
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 48.248375
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857345053051509380, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694864433978458871, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: m_Name
+      value: PeopleManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1f5cb29b66c92e4cad4a0c989ad8844, type: 3}

@@ -9,7 +9,6 @@ public class Train : MonoBehaviour
 
     public TrainCar carPrefab;
     public TrainCar frontCarPrefab;
-    public TrainCarPerson personPrefab;
 
     public float carWidth;
 
@@ -42,11 +41,14 @@ public class Train : MonoBehaviour
     public bool onTrack;
     public bool isBrakingFullStop;
 
+    PeopleManager peopleManager;
+
     // Start is called before the first frame update
     void Start()
     {
 
         Vector3 offset = new Vector3(0, 0, 0);
+        peopleManager = FindObjectOfType<PeopleManager>();
         
         for (int i = 0; i < numberOfCars; i++)
         {
@@ -64,14 +66,7 @@ public class Train : MonoBehaviour
             car.transform.localPosition = offset;
             offset -= new Vector3(xoffset, 0, 0);
 
-            while ( numberOfPeople > 0 ) {
-                TrainCarPerson person = Instantiate(personPrefab);
-                if (!car.Add(person)) { DestroyImmediate(person.gameObject); break; }
-                numberOfPeople -= 1;
-            }
-
             cars.Add(car);
-
         }
 
     }
@@ -95,6 +90,21 @@ public class Train : MonoBehaviour
         } else
         {
             Speed = Mathf.Max(Mathf.Min(Speed, trueTargetSpeed), -trueTargetSpeed);
+        }
+    }
+
+    void LoadTrain() {
+        foreach(var car in cars)
+        {
+            while ( numberOfPeople > 0 ) {
+                TrainCarPerson person = peopleManager.PopPersonFromLine();
+                if (person != null) {
+                    if (!car.Add(person)) { DestroyImmediate(person.gameObject); break; }
+                    numberOfPeople -= 1;
+                } else {
+                    break;
+                }
+            }
         }
     }
 }
