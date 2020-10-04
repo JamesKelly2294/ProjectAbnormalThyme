@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainCarBeginStop : MonoBehaviour
+public class TrainCarApplyBrakes : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,9 @@ public class TrainCarBeginStop : MonoBehaviour
         
     }
 
+    [Range(0, 5)]
+    public float brakingPower = 5.0f;
+
     private HashSet<Train> _affectedTrains = new HashSet<Train>();
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -26,8 +29,7 @@ public class TrainCarBeginStop : MonoBehaviour
             Train train = trainCar.train;
             if (_affectedTrains.Contains(train)) { return; }
             _affectedTrains.Add(train);
-            train.targetSpeed = 0;
-            train.brakingPower = 0;
+            train.brakingPower = brakingPower;
         }
     }
 }

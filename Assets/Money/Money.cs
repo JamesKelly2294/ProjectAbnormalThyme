@@ -25,9 +25,9 @@ public class Money : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        t += Time.deltaTime;
+        t += Time.fixedDeltaTime;
         if ( t > animationTime) {
             t -= animationTime;
         }
@@ -35,6 +35,6 @@ public class Money : MonoBehaviour
         Vector3 offset = new Vector3(xAcceleration.Evaluate(t / animationTime) * xAccelerationScale, yAcceleration.Evaluate(t / animationTime) * yAccelerationScale, 0f);
         transform.localPosition += offset;
 
-        transform.Rotate(new Vector3(0, 0, rotationRate * Time.deltaTime));
+        transform.Rotate(new Vector3(0, 0, rotationRate * Time.fixedDeltaTime));
     }
 }

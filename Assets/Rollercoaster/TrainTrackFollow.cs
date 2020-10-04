@@ -20,8 +20,6 @@ public class TrainTrackFollow : MonoBehaviour
         get { return TrackPathManager.Instance.Tracks; }
     }
 
-    [Range(0, 5)]
-    public float speed = 1.0f;
     private float _speed;
 
     private void Awake()
@@ -32,6 +30,8 @@ public class TrainTrackFollow : MonoBehaviour
     public void DemoAnimation()
     {
         if (!Application.isPlaying) { return; }
+
+        targetTrain.targetSpeed = 2.0f;
 
         // Step one: build the track waypoints
         List<Vector3> waypoints = new List<Vector3>();
@@ -80,7 +80,7 @@ public class TrainTrackFollow : MonoBehaviour
             result.SetEase(Ease.InOutQuad);
             result.SetSpeedBased();
             result.SetAutoKill();
-            result.timeScale = _speed;
+            result.timeScale = targetTrain.Speed;
 
             activePaths.Add(result);
         }
@@ -97,9 +97,9 @@ public class TrainTrackFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_speed != speed)
+        if (_speed != targetTrain.Speed)
         {
-            _speed = speed;
+            _speed = targetTrain.Speed;
             if (activePaths.Count() > 0)
             {
                 foreach (var path in activePaths)

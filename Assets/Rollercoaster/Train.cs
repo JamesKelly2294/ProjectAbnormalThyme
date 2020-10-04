@@ -15,6 +15,23 @@ public class Train : MonoBehaviour
 
     public float frontCarWidth;
 
+    public float Speed
+    {
+        get; protected set;
+    }
+
+    [Range(0, 5)]
+    public float brakingPower = 0; // negative multiplier on acceleration
+
+    [Range(0, 5)]
+    public float acceleration = 1; // units/second^2
+
+    [Range(0, 10)]
+    public float targetSpeed = 0;
+
+    [Range (0, 10)]
+    public float maxSpeed = 5;
+
     public int numberOfCars;
 
     public int numberOfPeople;
@@ -56,8 +73,16 @@ public class Train : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        Speed += (acceleration * (brakingPower > 0 ? -brakingPower : 1)) * Time.fixedDeltaTime;
+        float trueTargetSpeed = Mathf.Max(Mathf.Min(targetSpeed, maxSpeed), -maxSpeed);
+        if (brakingPower > 0)
+        {
+            Speed = Mathf.Max(Mathf.Min(Speed, trueTargetSpeed), 0);
+        } else
+        {
+            Speed = Mathf.Max(Mathf.Min(Speed, trueTargetSpeed), -trueTargetSpeed);
+        }
     }
 }

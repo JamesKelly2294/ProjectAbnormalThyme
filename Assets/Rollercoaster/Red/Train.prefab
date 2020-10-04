@@ -53,9 +53,14 @@ MonoBehaviour:
     type: 3}
   carWidth: 0.23
   frontCarWidth: 0.24
+  brakingPower: 0
+  acceleration: 1
+  targetSpeed: 0
+  maxSpeed: 5
   numberOfCars: 4
   numberOfPeople: 0
   onTrack: 0
+  isBraking: 0
 --- !u!114 &2714913688138282384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,4 +74,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTrain: {fileID: 2805213164322088690}
-  speed: 1
