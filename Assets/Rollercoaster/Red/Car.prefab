@@ -102,7 +102,7 @@ MonoBehaviour:
   - 0.025
   - -0.025
   - -0.075
-  peopleYPosition: 0.06
+  peopleYPosition: 0.045
 --- !u!61 &2835868834123339645
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ MonoBehaviour:
     type: 3}
   frontCarPrefab: {fileID: 181005145442961859, guid: d7432109ddcc844458bd4a4adfe55360,
     type: 3}
-  personPrefab: {fileID: 3270097275694417230, guid: dffb7deac2d55b6418d8c2f58b7eb21f,
+  personPrefab: {fileID: -8646991426217491894, guid: 737a110f8151bfe46acaea665a66c4d9,
     type: 3}
   carWidth: 0.23
   frontCarWidth: 0.24
@@ -57,10 +57,11 @@ MonoBehaviour:
   acceleration: 1
   targetSpeed: 0
   maxSpeed: 5
+  minimumSpeed: 1
   numberOfCars: 4
   numberOfPeople: 0
   onTrack: 0
-  isBraking: 0
+  isBrakingFullStop: 0
 --- !u!114 &2714913688138282384
 MonoBehaviour:
   m_ObjectHideFlags: 0
