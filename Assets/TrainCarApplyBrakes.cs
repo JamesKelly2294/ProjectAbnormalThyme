@@ -16,7 +16,7 @@ public class TrainCarApplyBrakes : MonoBehaviour
         
     }
 
-    [Range(0, 5)]
+    [Range(0, 100)]
     public float brakingPower = 5.0f;
 
     private HashSet<Train> _affectedTrains = new HashSet<Train>();

@@ -13,5 +13,11 @@ public class TrainTrackFollowEditor : Editor
         {
             myScript.DemoAnimation();
         }
+        if (GUILayout.Button("Go bitch, GO!"))
+        {
+            myScript.targetTrain.isBrakingFullStop = false;
+            myScript.targetTrain.targetSpeed = 2.0f;
+            myScript.targetTrain.brakingPower = 0.0f;
+        }
     }
 }

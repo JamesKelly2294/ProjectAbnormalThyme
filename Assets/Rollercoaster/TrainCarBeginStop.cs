@@ -26,8 +26,8 @@ public class TrainCarBeginStop : MonoBehaviour
             Train train = trainCar.train;
             if (_affectedTrains.Contains(train)) { return; }
             _affectedTrains.Add(train);
-            train.targetSpeed = 0;
-            train.brakingPower = 0;
+            train.brakingPower = 10;
+            train.isBrakingFullStop = true;
         }
     }
 }
