@@ -111,4 +111,12 @@ public class TrainTrackFollow : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        foreach (var path in activePaths)
+        {
+            path.Kill();
+        }
+    }
 }
