@@ -225,8 +225,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2965557273720193308}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &815667963 stripped
 MonoBehaviour:
@@ -320,21 +320,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3511142998611127057, guid: 18b457112fe9e924fa1f14da9f11c4b1,
-        type: 3}
-      propertyPath: currentBalance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3663124187656488581, guid: 18b457112fe9e924fa1f14da9f11c4b1,
-        type: 3}
-      propertyPath: maxLineLength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3663124187656488581, guid: 18b457112fe9e924fa1f14da9f11c4b1,
-        type: 3}
-      propertyPath: lineAcceptanceRate
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5824674299614681390, guid: 18b457112fe9e924fa1f14da9f11c4b1,
         type: 3}
       propertyPath: m_Name
@@ -353,7 +338,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 519420032}
   - {fileID: 1798941871}
   - {fileID: 1603424697}
   - {fileID: 869212777}

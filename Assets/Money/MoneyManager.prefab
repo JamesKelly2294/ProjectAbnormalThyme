@@ -43,8 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce06266765bd744ab76f03bfcfa7575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentBalance: 1000
-  incomeThisSample: 0
+  currentBalance: 10
   timePerSample: 1
   maxSamples: 30
   averageIncomePerSecond: 0

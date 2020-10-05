@@ -105,7 +105,7 @@ PrefabInstance:
     - target: {fileID: 3991827843850083197, guid: 954c58ecb1c03cf4dad1129e90c9603c,
         type: 3}
       propertyPath: currentBalance
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 954c58ecb1c03cf4dad1129e90c9603c, type: 3}
@@ -379,7 +379,12 @@ PrefabInstance:
     - target: {fileID: 7237228714920888875, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
         type: 3}
       propertyPath: lineAcceptanceRate
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7237228714920888875, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
+        type: 3}
+      propertyPath: maxLineLength
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8694864433978458871, guid: b1f5cb29b66c92e4cad4a0c989ad8844,
         type: 3}
