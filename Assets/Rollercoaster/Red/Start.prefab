@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  isBlueprint: 0
 --- !u!50 &903654736769925445
 Rigidbody2D:
   serializedVersion: 4

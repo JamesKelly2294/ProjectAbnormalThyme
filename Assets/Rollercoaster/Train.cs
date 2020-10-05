@@ -133,4 +133,18 @@ public class Train : MonoBehaviour
         IsBrakingFullStop = true;
         _activeDel = del;
     }
+
+    private bool _ghostified;
+    public void Ghostify()
+    {
+        if(_ghostified) { return; }
+        _ghostified = true;
+        var srs = transform.GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < srs.Length; i++)
+        {
+            var sr = srs[i];
+            var color = sr.color;
+            sr.color = new Color(color.r, color.g, color.b, color.a * 0.25f);
+        }
+    }
 }

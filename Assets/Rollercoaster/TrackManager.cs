@@ -16,9 +16,11 @@ public class TrackManager : MonoBehaviour
 
     private Dictionary<TrackType, List<Track>> trackMap = new Dictionary<TrackType, List<Track>>();
     private Dictionary<TrackType, bool> unlockedTracksMap = new Dictionary<TrackType, bool>();
+    private TrainManager trainManager;
 
     private void Awake()
     {
+        trainManager = FindObjectOfType<TrainManager>();
         Tracks = new List<Track>();
 
         unlockedTracksMap.Add(TrackType.Straight, true);
@@ -108,11 +110,16 @@ public class TrackManager : MonoBehaviour
     public Track PlaceTrack(Track trackPrefab, Vector2Int coordinates)
     {
         Track oldtrack = TrackAt(coordinates);
-        if(!oldtrack) { return null; }
-        Destroy(oldtrack.gameObject);
+
+        if (oldtrack)
+        {
+            Destroy(oldtrack.gameObject);
+        }
 
         Track newTrack = Instantiate(trackPrefab, transform);
         newTrack.transform.position = new Vector3(coordinates.x, coordinates.y, 0);
+
+        trainManager.GhostifyActiveAndIdleTrains();
         
         return newTrack;
     }

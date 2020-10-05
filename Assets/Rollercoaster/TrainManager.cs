@@ -131,4 +131,13 @@ public class TrainManager : MonoBehaviour
     {
         activeTrains.RemoveAt(0);
     }
+    
+    public void GhostifyActiveAndIdleTrains()
+    {
+        idleTrain?.Ghostify();
+        foreach (Train t in activeTrains)
+        {
+            t.Ghostify();
+        }
+    }
 }
