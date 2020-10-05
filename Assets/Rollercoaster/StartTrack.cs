@@ -19,7 +19,12 @@ public class StartTrack : MonoBehaviour
     public Sprite orangeLightSprite;
     public Sprite redLightSprite;
 
+    // Todo move to separate script
+    public SpriteRenderer progressBarMeterFull;
+    public SpriteRenderer progressBarProgress;
+
     private TrainManager trainManager;
+    private TrackManager trackManager;
 
     StartTrackLight trackLight = StartTrackLight.Unknown;
 
@@ -27,11 +32,41 @@ public class StartTrack : MonoBehaviour
     void Start()
     {
         trainManager = GameObject.Find("TrainManager").GetComponent<TrainManager>();
+        trackManager = FindObjectOfType<TrackManager>();
+
+        progressBarProgress.enabled = false;
     }
+
+    bool _timerTicking = false;
+    float t = 0;
 
     // Update is called once per frame
     void Update()
     {
+        if (trackManager.IsUpgradeApplied(TrackTypeUpgrade.TrainOMatic) && trainManager.IsIdleTrainWaiting() && !_timerTicking)
+        {
+            t = 0;
+            _timerTicking = true;
+            progressBarProgress.enabled = true;
+        }
+
+        if (_timerTicking)
+        {
+            t += Time.deltaTime;
+
+            float pct = Mathf.Clamp01(t / trackManager.AutoTrainLauncherTime());
+            //progressBarProgress.transform.position;
+            progressBarProgress.transform.localScale = new Vector3(progressBarMeterFull.transform.localScale.x * pct, progressBarMeterFull.transform.localScale.y, progressBarMeterFull.transform.localScale.z);
+
+            if (t >= trackManager.AutoTrainLauncherTime())
+            {
+                t = 0;
+                progressBarProgress.enabled = false;
+                trainManager.SendNewTrain();
+                _timerTicking = false;
+            }
+        }
+
         StartTrackLight newLightState;
         if (!trainManager.CanTrackAcceptNewTrain() || !trainManager.IsIdleTrainWaiting())
         {

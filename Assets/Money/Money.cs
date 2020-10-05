@@ -2,8 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MoneyType
+{
+    Green,
+    Red,
+    Blue,
+    Purple
+}
+
 public class Money : MonoBehaviour
 {
+
+    public static MoneyManager c_moneyManager;
+
+    public MoneyType type;
 
     public AnimationCurve xAcceleration;
     public AnimationCurve yAcceleration;
@@ -16,12 +28,17 @@ public class Money : MonoBehaviour
 
     public float rotationRate = 100;
 
-    public int value = 1;
+    public int StartingValue = 1;
+    public int Value
+    {
+        get {
+            return Mathf.RoundToInt(StartingValue * MoneyManager.Instance.MultiplierForMoneyType(type));
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame

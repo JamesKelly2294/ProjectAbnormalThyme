@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
-  m_Name: IncreaseRed
+  m_Name: WinTheGame
   m_EditorClassIdentifier: 
-  title: Set expectations
-  description: Parkgoers need to understand that we are a high-class establishment.
-    They should bring more cash. (x2 red bill value)
-  cost: 2000
-  image: {fileID: 21300000, guid: e2ba6f0e7f1dafa419a2c3a307266501, type: 3}
-  repeats: 1
-  priceScaling: 3.75
+  title: A New World Order
+  description: No one will get off Mr. Bones Wild Ride now...
+  cost: 1000000000
+  image: {fileID: 21300000, guid: 2eba266efb15b2a408575eabb4b4d3be, type: 3}
+  repeats: 0
+  priceScaling: 0
   effects:
-  - parameter: 14
+  - parameter: 18
     operation: 1
-    amount: 2
-  nextUpgrades: []
+    amount: 0
+  nextUpgrades:
+  - {fileID: 11400000, guid: c0da71b4f5f6b474686931e537d45a9c, type: 2}

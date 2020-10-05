@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-
+    static MoneyManager _instance;
+    public static MoneyManager Instance
+    {
+        get
+        {
+            if (_instance == null) { 
+                _instance = FindObjectOfType<MoneyManager>();
+            }
+            return _instance;
+        }
+    }
     public long currentBalance = 0;
 
     int incomeThisSample = 0;
@@ -12,6 +22,7 @@ public class MoneyManager : MonoBehaviour
     public float timePerSample = 1f;
     public int maxSamples = 30;
     public float averageIncomePerSecond = 0;
+    private Dictionary<UpgradeParameter, int> unlockedUpgrades = new Dictionary<UpgradeParameter, int>();
 
     float t = 0;
 
@@ -29,6 +40,55 @@ public class MoneyManager : MonoBehaviour
             t -= timePerSample;
 
             UpdateSamples();
+        }
+    }
+
+    // last minute hackiness, should be with an "upgrade manager"
+    public bool IsUpgradeApplied(UpgradeParameter upgrade)
+    {
+        return unlockedUpgrades.ContainsKey(upgrade);
+    }
+
+    public float MultiplierForMoneyType(MoneyType type)
+    {
+        UpgradeParameter upgradeType = UpgradeParameter.greenMoneyValue;
+        switch(type)
+        {
+            case MoneyType.Green:
+                upgradeType = UpgradeParameter.greenMoneyValue;
+                break;
+            case MoneyType.Red:
+                upgradeType = UpgradeParameter.redMoneyValue;
+                break;
+            case MoneyType.Blue:
+                upgradeType = UpgradeParameter.blueMoneyValue;
+                break;
+            case MoneyType.Purple:
+                upgradeType = UpgradeParameter.purpleMoneyValue;
+                break;
+            default:
+                return 1.0f;
+        }
+
+        if(unlockedUpgrades.ContainsKey(upgradeType))
+        {
+            return Mathf.Pow(2, unlockedUpgrades[upgradeType]);
+        }
+        else
+        {
+            return 1.0f;
+        }
+    }
+
+    public void ApplyUpgrade(UpgradeParameter upgrade)
+    {
+        if (unlockedUpgrades.ContainsKey(upgrade))
+        {
+            unlockedUpgrades[upgrade] += 1;
+        }
+        else
+        {
+            unlockedUpgrades[upgrade] = 1;
         }
     }
 

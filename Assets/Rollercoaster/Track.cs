@@ -14,7 +14,8 @@ public enum TrackType
 
 public enum TrackTypeUpgrade
 {
-    LoopSlowdown
+    LoopSlowdown,
+    TrainOMatic
 }
 
 public class Track : MonoBehaviour, Buyable

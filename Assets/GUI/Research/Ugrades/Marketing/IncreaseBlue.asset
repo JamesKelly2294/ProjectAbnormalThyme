@@ -18,7 +18,7 @@ MonoBehaviour:
   cost: 15000
   image: {fileID: 21300000, guid: 55a23a680c5aac74a8cf1801a61bb08a, type: 3}
   repeats: 1
-  priceScaling: 2
+  priceScaling: 3.75
   effects:
   - parameter: 15
     operation: 1

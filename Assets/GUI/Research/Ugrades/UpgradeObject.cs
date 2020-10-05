@@ -39,6 +39,8 @@ public enum UpgradeParameter {
     redMoneyValue,
     blueMoneyValue,
     purpleMoneyValue,
+    unlockTrainOMatic,
+    winTheGame
 }
 
 public enum UpgradeOperation {

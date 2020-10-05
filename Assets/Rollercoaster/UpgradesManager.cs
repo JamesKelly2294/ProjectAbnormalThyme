@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UpgradesManager : MonoBehaviour
 {
@@ -70,6 +71,24 @@ public class UpgradesManager : MonoBehaviour
                 break;
             case UpgradeParameter.loopSlowdown:
                 trackManager.ApplyUpgrade(TrackTypeUpgrade.LoopSlowdown);
+                break;
+            case UpgradeParameter.unlockTrainOMatic:
+                trackManager.ApplyUpgrade(TrackTypeUpgrade.TrainOMatic);
+                break;
+            case UpgradeParameter.greenMoneyValue:
+                moneyManager.ApplyUpgrade(UpgradeParameter.greenMoneyValue);
+                break;
+            case UpgradeParameter.redMoneyValue:
+                moneyManager.ApplyUpgrade(UpgradeParameter.redMoneyValue);
+                break;
+            case UpgradeParameter.blueMoneyValue:
+                moneyManager.ApplyUpgrade(UpgradeParameter.blueMoneyValue);
+                break;
+            case UpgradeParameter.purpleMoneyValue:
+                moneyManager.ApplyUpgrade(UpgradeParameter.purpleMoneyValue);
+                break;
+            case UpgradeParameter.winTheGame:
+                SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
                 break;
         }
     }

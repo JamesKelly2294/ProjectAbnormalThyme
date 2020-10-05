@@ -44,13 +44,13 @@ public class MoneyPrinter : MonoBehaviour
     // Returns the new count of money
     public int DispenseABill(int current) {
         Money moneyPrefab;
-        if (current >= purpleMoneyPrefab.value && Random.Range(0, 10) >= 8 ) {
+        if (current >= purpleMoneyPrefab.StartingValue && Random.Range(0, 10) >= 8 ) {
             moneyPrefab = purpleMoneyPrefab;
-        } else if (current >= blueMoneyPrefab.value && Random.Range(0, 10) >= 5 ) {
+        } else if (current >= blueMoneyPrefab.StartingValue && Random.Range(0, 10) >= 5 ) {
             moneyPrefab = blueMoneyPrefab;
-        } else if (current >= redMoneyPrefab.value && Random.Range(0, 10) >= 2 ) {
+        } else if (current >= redMoneyPrefab.StartingValue && Random.Range(0, 10) >= 2 ) {
             moneyPrefab = redMoneyPrefab;
-        } else if (current >= greenMoneyPrefab.value ) {
+        } else if (current >= greenMoneyPrefab.StartingValue) {
             moneyPrefab = greenMoneyPrefab;
         } else {
             return 0;
@@ -58,7 +58,7 @@ public class MoneyPrinter : MonoBehaviour
 
 
         if (moneyManager != null) {
-            moneyManager.AddIncome(moneyPrefab.value);
+            moneyManager.AddIncome(moneyPrefab.Value);
         }
 
 
@@ -66,6 +66,6 @@ public class MoneyPrinter : MonoBehaviour
         instance.t = Random.Range(0, instance.animationTime);
         instance.transform.position = transform.position;
         Destroy(instance.gameObject, 5f);
-        return current - moneyPrefab.value;
+        return current - moneyPrefab.StartingValue;
     }
 }

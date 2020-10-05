@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5365a4e55d3739b4fae613a0e0307580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   xAcceleration:
     serializedVersion: 2
     m_Curve:
@@ -192,4 +193,4 @@ MonoBehaviour:
   t: 0
   animationTime: 2
   rotationRate: -200
-  value: 10
+  StartingValue: 10
