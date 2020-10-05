@@ -323,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 3511142998611127057, guid: 18b457112fe9e924fa1f14da9f11c4b1,
         type: 3}
       propertyPath: currentBalance
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3663124187656488581, guid: 18b457112fe9e924fa1f14da9f11c4b1,
         type: 3}
