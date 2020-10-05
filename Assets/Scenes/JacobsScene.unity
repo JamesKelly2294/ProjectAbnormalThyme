@@ -121,46 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1894931668 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2292672692877503794, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
-    type: 3}
-  m_PrefabInstance: {fileID: 2775772224613497745}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1894931671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894931668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: 1
-  m_FlexibleHeight: 1
-  m_LayoutPriority: 1
---- !u!114 &1894931672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894931668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!1001 &2775772224613497745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -168,6 +128,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 196505249762841663, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196505249762841663, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1126533781274016397, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -253,10 +223,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3771048718567949926, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
+    - target: {fileID: 4241671305448308192, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
         type: 3}
-      propertyPath: numberOfCars
-      value: 1
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4241671305448308192, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
         type: 3}
@@ -273,6 +243,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game
       objectReference: {fileID: 0}
+    - target: {fileID: 6939369515414212567, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939369515414212567, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8694882982215345334, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -286,6 +266,11 @@ PrefabInstance:
     - target: {fileID: 8694882982215345334, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694882982215345334, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8705825885984761907, guid: 19d7e35b93e3e8544b5e6ba0b34b6556,
