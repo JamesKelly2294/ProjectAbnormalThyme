@@ -18,19 +18,22 @@ public class TrackPlacer : MonoBehaviour
 
     private GameObject blueprintsGrid;
 
-    public List<GameObject> trackBlueprints;
     public GameObject selectedBlueprint;
+    public Building selectedBuilding;
 
     private int selectedBlueprintIndex = -1;
 
     private TrackManager trackManager;
     private MoneyManager moneyManager;
 
+    private TracksTab tracksTab;
+
     // Start is called before the first frame update
     void Start()
     {
         trackManager = FindObjectOfType<TrackManager>();
         moneyManager = FindObjectOfType<MoneyManager>();
+        tracksTab = FindObjectOfType<TracksTab>();
 
         trackedCamera = Camera.main;
         minX = Mathf.FloorToInt(trackedCamera.transform.position.x) - Mathf.FloorToInt(width / 2);
@@ -101,9 +104,9 @@ public class TrackPlacer : MonoBehaviour
         if (!oldTrack) { return false; } // can only replace existing tracks
         if (oldTrack.type == newTrack.type) { return false; }
         if (oldTrack.type == TrackType.Start || oldTrack.type == TrackType.End) { return false; }
-        int oldTrackRefund = newTrack.RefundAmount();
+        int oldTrackRefund = oldTrack.RefundAmount();
         
-        int totalCost = oldTrackRefund + newTrackCost;
+        int totalCost = -oldTrackRefund + newTrackCost;
 
         if (moneyManager.currentBalance < totalCost) { return false; }
 
@@ -143,13 +146,13 @@ public class TrackPlacer : MonoBehaviour
             {
                 newSelectedBlueprintIndex = -1;
             }
-            GameObject newSelectedBlueprint = null;
 
             Destroy(selectedBlueprint);
-            if (newSelectedBlueprintIndex >= 0 && newSelectedBlueprintIndex < trackBlueprints.Count)
+            selectedBlueprint = null;
+            if (newSelectedBlueprintIndex >= 0 && newSelectedBlueprintIndex < tracksTab.buildings.Count)
             {
-                newSelectedBlueprint = trackBlueprints[newSelectedBlueprintIndex];
-                selectedBlueprint = Instantiate(newSelectedBlueprint);
+                selectedBuilding = tracksTab.buildings[newSelectedBlueprintIndex];
+                selectedBlueprint = Instantiate(selectedBuilding.buyableBlueprintPrefab);
                 GameObject highlight = Instantiate(selectedBlueprintHighlightPrefab);
                 highlight.transform.parent = selectedBlueprint.transform;
                 highlight.transform.name = "Highlight";
@@ -161,6 +164,36 @@ public class TrackPlacer : MonoBehaviour
             } 
 
             selectedBlueprintIndex = newSelectedBlueprintIndex;
+        }
+
+        if (IsPlacementValid() && Input.GetMouseButtonDown(0))
+        {
+            PlaceBlueprint();
+        }
+    }
+
+    void PlaceBlueprint()
+    {
+        if(selectedBlueprint == null) { return; }
+        bool success = false;
+        Track newTrack = selectedBuilding.buildingPrefab.GetComponent<Track>();
+        Track oldTrack = trackManager.TrackAt(GetSelectedBlueprintCoords());
+        int totalCost = 0;
+
+        if (newTrack && oldTrack)
+        {
+            newTrack = trackManager.PlaceTrack(newTrack, GetSelectedBlueprintCoords());
+            success = newTrack != null;
+            if (success) { 
+                totalCost -= newTrack.PurchaseCost();
+                totalCost += oldTrack.RefundAmount();
+                success = true;
+            }
+        }
+
+        if(success)
+        {
+            moneyManager.currentBalance += totalCost;
         }
     }
 }

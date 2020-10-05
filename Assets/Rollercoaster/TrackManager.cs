@@ -90,4 +90,16 @@ public class TrackManager : MonoBehaviour
     {
         return unlockedTracksMap.ContainsKey(type) && unlockedTracksMap[type];
     }
+
+    public Track PlaceTrack(Track trackPrefab, Vector2Int coordinates)
+    {
+        Track oldtrack = TrackAt(coordinates);
+        if(!oldtrack) { return null; }
+        Destroy(oldtrack.gameObject);
+
+        Track newTrack = Instantiate(trackPrefab, transform);
+        newTrack.transform.position = new Vector3(coordinates.x, coordinates.y, 0);
+        
+        return newTrack;
+    }
 }
