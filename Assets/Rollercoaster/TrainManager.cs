@@ -7,6 +7,8 @@ public class TrainManager : MonoBehaviour
     public GameObject trainPrefab;
     public List<Train> trains;
 
+    public int numberOfCars = 1;
+
     [Header("Active Trains")]
     public List<Train> activeTrains;
     public int activeTrainCapacity = 1;
@@ -84,7 +86,7 @@ public class TrainManager : MonoBehaviour
         {
             GameObject newIdleTrainGO = Instantiate(trainPrefab);
             idleTrain = newIdleTrainGO.GetComponent<Train>();
-            idleTrain.numberOfCars = 1;
+            idleTrain.numberOfCars = numberOfCars;
             idleTrain.numberOfPeople = Mathf.Min(idleTrain.maxPeoplePerCar * idleTrain.numberOfCars, passengerQueueLength);
             idleTrain.Initialize();
             idleTrain.LoadTrain();

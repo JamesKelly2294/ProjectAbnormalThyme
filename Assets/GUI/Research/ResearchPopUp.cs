@@ -30,8 +30,6 @@ public class ResearchPopUp : MonoBehaviour
     }
 
     public void ChangeTab(ResearchTabType newTab) {
-        Debug.Log("Change tab to" + newTab);
-
         GameObject currentTabButton = TabButtonForResearchTabType(currentTab);
         GameObject newTabButton = TabButtonForResearchTabType(newTab);
 
