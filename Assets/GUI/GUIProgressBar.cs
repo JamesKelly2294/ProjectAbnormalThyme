@@ -16,7 +16,7 @@ public class GUIProgressBar : MonoBehaviour
         }
         set
         {
-            _value = value;
+            _value = Mathf.Clamp01(value);
             progressBarInner.sizeDelta = new Vector2(_value * progressBarOuter.rect.width, progressBarInner.sizeDelta.y);
         }
     }
