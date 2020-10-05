@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Increase Limit of Trains
   description: ...
   cost: 0
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 6ad7a6d820c8a7d4d9a82377c3e36a83, type: 3}
   repeats: 1
   priceScaling: 0
   effects:

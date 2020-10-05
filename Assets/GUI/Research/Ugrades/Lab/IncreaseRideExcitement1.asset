@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Tune Ride
   description: Doubles guest excitement
   cost: 10
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  image: {fileID: 21300000, guid: 6f8ceee09cf15864ca2c0cd1179c0a12, type: 3}
   repeats: 1
   priceScaling: 10
   effects:

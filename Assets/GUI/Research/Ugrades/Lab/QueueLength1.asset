@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Longer Queues
   description: Double the length of the queue
   cost: 100
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  image: {fileID: 21300000, guid: 591eaf93095791c468cd1700ef0f30b3, type: 3}
   repeats: 1
   priceScaling: 3
   effects:

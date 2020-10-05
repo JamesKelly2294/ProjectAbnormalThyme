@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Increase Train Creation Rate
   description: Fill Trains from the Queue Faster
   cost: 0
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: df3d948df5ad696409aa354bcd524432, type: 3}
   repeats: 1
   priceScaling: 0
   effects:

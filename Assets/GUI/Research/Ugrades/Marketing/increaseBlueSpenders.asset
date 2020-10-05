@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Market How Cool the People are Who Ride the Ride
   description: Increases the likelyhood of upper-middle class teens visiting.
   cost: 100
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 5f3b6d341a2421342bbc3f974897abe1, type: 3}
   repeats: 1
   priceScaling: 2
   effects:

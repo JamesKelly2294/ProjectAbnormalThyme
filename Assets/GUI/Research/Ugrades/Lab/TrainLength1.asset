@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Longer Trains
   description: Increase the length of the trains by 1 car.
   cost: 100
-  image: {fileID: 21300000, guid: ac37c896034ea8c45a3a5659cc3870d6, type: 3}
+  image: {fileID: 21300000, guid: d6def790389c7724fa2e82dedb6071cc, type: 3}
   repeats: 1
   priceScaling: 10
   effects:

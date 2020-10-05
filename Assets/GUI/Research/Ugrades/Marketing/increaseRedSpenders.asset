@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Market How Fun the Ride is
   description: Increases likely hood of regular families to attend.
   cost: 10
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 12606c4888db4e34d808f576a27f0dea, type: 3}
   repeats: 1
   priceScaling: 2
   effects:

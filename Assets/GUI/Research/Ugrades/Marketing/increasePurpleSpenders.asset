@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Market how Succulent the Caviar is
   description: Increases the likelyhood of very wealthy guests
   cost: 1000
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: b791b384402777d419543993585e9b75, type: 3}
   repeats: 1
   priceScaling: 3
   effects:

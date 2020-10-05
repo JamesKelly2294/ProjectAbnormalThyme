@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Increase Concurent Trains
   description: Allow one more train on the track.
   cost: 0
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: d6b5ebf5726f285448202055d6f99000, type: 3}
   repeats: 1
   priceScaling: 0
   effects:

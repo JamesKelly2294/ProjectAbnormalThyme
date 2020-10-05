@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Do Evil
   description: You know, they came here to spend that money.,
   cost: 1
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 53ecee68dda9152408705c47297a969d, type: 3}
   repeats: 0
   priceScaling: 0
   effects:
