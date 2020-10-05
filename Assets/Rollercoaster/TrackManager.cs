@@ -16,6 +16,7 @@ public class TrackManager : MonoBehaviour
 
     private Dictionary<TrackType, List<Track>> trackMap = new Dictionary<TrackType, List<Track>>();
     private Dictionary<TrackType, bool> unlockedTracksMap = new Dictionary<TrackType, bool>();
+    private HashSet<TrackTypeUpgrade> unlockedUpgrades = new HashSet<TrackTypeUpgrade>();
     private TrainManager trainManager;
 
     private void Awake()
@@ -25,6 +26,21 @@ public class TrackManager : MonoBehaviour
 
         unlockedTracksMap.Add(TrackType.Straight, true);
         unlockedTracksMap.Add(TrackType.Loop, true);
+    }
+
+    public bool IsUpgradeApplied(TrackTypeUpgrade upgrade)
+    {
+        return unlockedUpgrades.Contains(upgrade);
+    }
+
+    public void ApplyUpgrade(TrackTypeUpgrade upgrade)
+    {
+        unlockedUpgrades.Add(upgrade);
+    }
+
+    public void UnlockTrackType(TrackType type)
+    {
+        unlockedTracksMap.Add(type, true);
     }
 
     public void RegisterTrack(Track track)

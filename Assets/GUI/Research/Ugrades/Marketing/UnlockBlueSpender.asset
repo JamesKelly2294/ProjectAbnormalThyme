@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
   m_Name: UnlockBlueSpender
   m_EditorClassIdentifier: 
-  title: Unlock Blue Spender
-  description: 1% Chance of Blue Spender
-  cost: 100
+  title: Begin market research on DINKs
+  description: Forget families. DINKs have the real cash. 10% chance of blue guests.
+  cost: 10000
   image: {fileID: 21300000, guid: 5f3b6d341a2421342bbc3f974897abe1, type: 3}
   repeats: 0
   priceScaling: 0
   effects:
   - parameter: 6
     operation: 2
-    amount: 0.01
+    amount: 0.1
   nextUpgrades:
   - {fileID: 11400000, guid: b66386b85e29b5d4583af4bea0a19b58, type: 2}
-  - {fileID: 11400000, guid: d8e7a7a620a760f4697273800516657f, type: 2}
+  - {fileID: 11400000, guid: 13c5a519d4caeff4eb632f7e12dab284, type: 2}

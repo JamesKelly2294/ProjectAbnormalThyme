@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
   m_Name: IncreaseNumberOfTrains
   m_EditorClassIdentifier: 
-  title: Increase Limit of Trains
-  description: ...
-  cost: 0
+  title: Add Train Parking
+  description: Train parking allows more trains to queue up for the ride
+  cost: 75
   image: {fileID: 21300000, guid: 6ad7a6d820c8a7d4d9a82377c3e36a83, type: 3}
   repeats: 1
-  priceScaling: 0
+  priceScaling: 10
   effects:
   - parameter: 3
     operation: 0

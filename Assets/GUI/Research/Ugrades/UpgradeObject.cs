@@ -32,6 +32,13 @@ public enum UpgradeParameter {
     purpleSpenderTypeChance,
     numberOfConcurentTrainsAllowedOnTrack,
     trainCreationRate,
+    unlockPhotoStation,
+    unlockBank,
+    loopSlowdown,
+    greenMoneyValue,
+    redMoneyValue,
+    blueMoneyValue,
+    purpleMoneyValue,
 }
 
 public enum UpgradeOperation {

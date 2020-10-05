@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
-  m_Name: increaseBlueSpenders
+  m_Name: UnlockPhoto
   m_EditorClassIdentifier: 
-  title: Market How Cool the People are Who Ride the Ride
-  description: Increases the likelyhood of DINKs showing up
-  cost: 100
-  image: {fileID: 21300000, guid: 5f3b6d341a2421342bbc3f974897abe1, type: 3}
-  repeats: 1
-  priceScaling: 5
+  title: Unlock photo station
+  description: Unlocks the photo station, which charges guests a flat fee based on
+    their wealth
+  cost: 50
+  image: {fileID: 21300000, guid: cbfa3b5971e5d144fb7872452019f469, type: 3}
+  repeats: 0
+  priceScaling: 3
   effects:
-  - parameter: 5
+  - parameter: 10
     operation: 1
-    amount: 1.1
-  - parameter: 6
-    operation: 1
-    amount: 2
-  nextUpgrades: []
+    amount: 0.5
+  nextUpgrades:
+  - {fileID: 11400000, guid: b3adf8663cec59a4ab2cfedda6d5ec7f, type: 2}

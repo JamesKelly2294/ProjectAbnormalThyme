@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: IncreaseRideExcitement1
   m_EditorClassIdentifier: 
   title: Tune Ride
-  description: Doubles guest excitement
+  description: Doubles guest excitement. They'll be having too much fun to pay attention
+    to their wallet!
   cost: 10
   image: {fileID: 21300000, guid: 6f8ceee09cf15864ca2c0cd1179c0a12, type: 3}
   repeats: 1

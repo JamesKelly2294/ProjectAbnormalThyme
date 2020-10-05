@@ -12,6 +12,11 @@ public enum TrackType
     Bank
 }
 
+public enum TrackTypeUpgrade
+{
+    LoopSlowdown
+}
+
 public class Track : MonoBehaviour, Buyable
 {
     private TrackManager trackManager;
@@ -113,9 +118,9 @@ public class Track : MonoBehaviour, Buyable
             case TrackType.Loop:
                 return Mathf.RoundToInt(100 * (Mathf.Pow(5, n)));
             case TrackType.Photo:
-                return 100;
+                return Mathf.RoundToInt(100 * (Mathf.Pow(3.5f, n)));
             case TrackType.Bank:
-                return 1000;
+                return Mathf.RoundToInt(100 * (Mathf.Pow(4, n)));
             default:
                 return 0;
         }

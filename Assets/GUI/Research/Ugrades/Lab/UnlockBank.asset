@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
-  m_Name: IncreaseNumberOfConcurentTrains
+  m_Name: UnlockBank
   m_EditorClassIdentifier: 
-  title: Increase Concurent Trains
-  description: Allow one more train on the track.
-  cost: 100
-  image: {fileID: 21300000, guid: d6b5ebf5726f285448202055d6f99000, type: 3}
-  repeats: 1
-  priceScaling: 25
+  title: Partner with H.O. Norgan
+  description: Unlocks the bank station, allowing guests to replenish their wallets
+    a little mid-ride, if they have the funds
+  cost: 15000
+  image: {fileID: 21300000, guid: bbdcdd48e0549954684dab3ddda54d95, type: 3}
+  repeats: 0
+  priceScaling: 3
   effects:
-  - parameter: 8
-    operation: 0
-    amount: 1
+  - parameter: 11
+    operation: 1
+    amount: 0.5
   nextUpgrades: []

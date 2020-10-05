@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
   m_Name: UnlockRedSpender
   m_EditorClassIdentifier: 
-  title: Unlock Red Spender
-  description: 1% Chance of Red Spender
+  title: Begin market research on "families"
+  description: Apparently "families" have "children" who love rides, making them
+    good targets. 10% chance of red guests.
   cost: 10
   image: {fileID: 21300000, guid: 12606c4888db4e34d808f576a27f0dea, type: 3}
   repeats: 0
@@ -25,3 +26,4 @@ MonoBehaviour:
   nextUpgrades:
   - {fileID: 11400000, guid: f31fef9953577d541aa7d30d08608594, type: 2}
   - {fileID: 11400000, guid: e2b48a8c952210040be7a525026467c5, type: 2}
+  - {fileID: 11400000, guid: 0c40438fbf541bb4b85acbfa316e6f2c, type: 2}

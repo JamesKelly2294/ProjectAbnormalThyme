@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
   m_Name: UnlockPurpleSpender
   m_EditorClassIdentifier: 
-  title: Unlock Purple Spender
-  description: 1% Chance of Purple Spender
-  cost: 1000
+  title: Begin market research on Bezos and friends
+  description: I wonder how much Bezos carries around in his wallet? Let's find out.
+    10% chance of purple guests.
+  cost: 100000
   image: {fileID: 21300000, guid: b791b384402777d419543993585e9b75, type: 3}
   repeats: 0
   priceScaling: 0
   effects:
   - parameter: 7
     operation: 2
-    amount: 0.01
+    amount: 0.1
   nextUpgrades:
   - {fileID: 11400000, guid: a0f5d7c240a0c6a49b861fa068ea7214, type: 2}
+  - {fileID: 11400000, guid: 712f3fadc7b843c4195b10817c50b39e, type: 2}

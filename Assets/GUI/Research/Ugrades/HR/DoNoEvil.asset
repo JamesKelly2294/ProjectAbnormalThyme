@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Do no Evil
   description: Bring park into compliance with applicable state and local laws.
-  cost: 1
+  cost: 0
   image: {fileID: 21300000, guid: d28f06d6de6aab14dafe8f224d033aad, type: 3}
   repeats: 0
   priceScaling: 0

@@ -55,10 +55,47 @@ public class ResearchUpgradeRow : MonoBehaviour
         }
 
         // Create unlocked upgrades...
-        foreach(var newUpgrade in upgrade.nextUpgrades) {
-            ResearchUpgradeRow row = Instantiate(upgradesManager.updateRowPrefab, transform.parent);
+        var oldParent = transform.parent;
+        foreach (var newUpgrade in upgrade.nextUpgrades) {
+            ResearchUpgradeRow row = Instantiate(upgradesManager.updateRowPrefab, oldParent);
             row.upgrade = newUpgrade;
         }
+
+        // Sort rows
+        //GameObject holder = new GameObject();
+        //var upgrades = new List<ResearchUpgradeRow>();
+        //for (int i = oldParent.childCount - 1; i >= 0; i--)
+        //{
+        //    var child = oldParent.GetChild(i);
+        //    child.transform.SetParent(holder.transform, false);
+        //    upgrades.Add(child.GetComponent<ResearchUpgradeRow>());
+        //}
+
+        //upgrades.Sort((first, second) =>
+        //{
+        //    if (first.upgrade.repeats == second.upgrade.repeats)
+        //    {
+        //        return first.upgrade.cost.CompareTo(second.upgrade.cost);
+        //    }
+        //    else
+        //    {
+        //        if (first.upgrade.repeats)
+        //        {
+        //            return 1;
+        //        }
+        //        else
+        //        {
+        //            return -1;
+        //        }
+        //    }
+        //});
+
+        //foreach (var row in upgrades)
+        //{
+        //    row.transform.SetParent(oldParent, false);
+        //}
+
+        //Destroy(holder);
     }
 
     void UpdateLabels() {

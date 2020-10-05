@@ -320,6 +320,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3663124187656488581, guid: 18b457112fe9e924fa1f14da9f11c4b1,
+        type: 3}
+      propertyPath: maxLineLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663124187656488581, guid: 18b457112fe9e924fa1f14da9f11c4b1,
+        type: 3}
+      propertyPath: lineAcceptanceRate
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5824674299614681390, guid: 18b457112fe9e924fa1f14da9f11c4b1,
         type: 3}
       propertyPath: m_Name

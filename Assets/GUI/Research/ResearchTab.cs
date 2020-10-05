@@ -14,7 +14,23 @@ public class ResearchTab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(var upgrade in upgrades) {
+        upgrades.Sort((first, second) =>
+        {
+            if (first.repeats == second.repeats)
+            {
+                return first.cost.CompareTo(second.cost);
+            } else
+            {
+                if (first.repeats)
+                {
+                    return 1;
+                } else
+                {
+                    return -1;
+                }
+            }
+        });
+        foreach (var upgrade in upgrades) {
             ResearchUpgradeRow row = Instantiate(upgradeRowPrefab, contentList.transform);
             row.upgrade = upgrade;
         }

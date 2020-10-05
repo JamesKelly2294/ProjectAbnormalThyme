@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: increasePurpleSpenders
   m_EditorClassIdentifier: 
   title: Market how Succulent the Caviar is
-  description: Increases the likelyhood of very wealthy guests
+  description: Increases the likelyhood of Bezos and his friends showing up
   cost: 1000
   image: {fileID: 21300000, guid: b791b384402777d419543993585e9b75, type: 3}
   repeats: 1
-  priceScaling: 3
+  priceScaling: 10
   effects:
   - parameter: 5
     operation: 1

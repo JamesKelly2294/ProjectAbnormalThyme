@@ -62,6 +62,15 @@ public class UpgradesManager : MonoBehaviour
             case UpgradeParameter.trainCreationRate:
                 trainManager.newTrainInterval = ApplyOperationOnValue(effect.operation, effect.amount, trainManager.newTrainInterval);
                 break;
+            case UpgradeParameter.unlockPhotoStation:
+                trackManager.UnlockTrackType(TrackType.Photo);
+                break;
+            case UpgradeParameter.unlockBank:
+                trackManager.UnlockTrackType(TrackType.Bank);
+                break;
+            case UpgradeParameter.loopSlowdown:
+                trackManager.ApplyUpgrade(TrackTypeUpgrade.LoopSlowdown);
+                break;
         }
     }
 
