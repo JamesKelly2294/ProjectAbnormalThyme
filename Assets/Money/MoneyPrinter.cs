@@ -22,7 +22,7 @@ public class MoneyPrinter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        t = dispenseTime; // Makes it so that we dispense as soon as we hit the first spot.
+        t = 0;
         moneyManager = FindObjectOfType<MoneyManager>();
     }
 

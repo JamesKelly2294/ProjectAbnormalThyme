@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
-  m_Name: increaseRedSpenders
+  m_Name: DoEvil
   m_EditorClassIdentifier: 
-  title: Market How Fun the Ride is
-  description: Increases likely hood of regular families to attend.
-  cost: 10
+  title: Do Evil
+  description: You know, they came here to spend that money.,
+  cost: 1
   image: {fileID: 0}
-  repeats: 1
-  priceScaling: 2
+  repeats: 0
+  priceScaling: 0
   effects:
-  - parameter: 5
+  - parameter: 4
     operation: 1
-    amount: 2
-  nextUpgrades: []
+    amount: 100
+  nextUpgrades:
+  - {fileID: 11400000, guid: c0da71b4f5f6b474686931e537d45a9c, type: 2}

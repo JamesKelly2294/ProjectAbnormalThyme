@@ -31,6 +31,7 @@ public class ResearchUpgradeRow : MonoBehaviour
         UpdateLabels();
         PaintButtonAsUnavailable();
         upgradesManager = FindObjectOfType<UpgradesManager>();
+
     }
 
     // Update is called once per frame
@@ -51,6 +52,12 @@ public class ResearchUpgradeRow : MonoBehaviour
             Destroy(gameObject); // TODO: Display the user they bought something....
         } else {
             UpdateLabels();
+        }
+
+        // Create unlocked upgrades...
+        foreach(var newUpgrade in upgrade.nextUpgrades) {
+            ResearchUpgradeRow row = Instantiate(upgradesManager.updateRowPrefab, transform.parent);
+            row.upgrade = newUpgrade;
         }
     }
 

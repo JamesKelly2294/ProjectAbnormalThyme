@@ -16,27 +16,26 @@ public class UpgradeObject : ScriptableObject
     public float priceScaling;
 
     public List<UpgradeEffect> effects;
+
+    public List<UpgradeObject> nextUpgrades;
 }
 
 public enum UpgradeParameter {
 
-    // Labs -- On Going
     lineLength,
     lineRefreshSpeed,
     numberOfCarsInEachTrain,
     numberOfTrains,
     rideExcitement,
-
-    // HR - On Going
-
-    // Marketing -- On Going
     redSpenderTypeChance,
     blueSpenderTypeChance,
-    purpleSpenderTypeChance
+    purpleSpenderTypeChance,
+    numberOfConcurentTrainsAllowedOnTrack,
+    trainCreationRate,
 }
 
 public enum UpgradeOperation {
-    add, scale
+    add, scale, set
 }
 
 [Serializable]

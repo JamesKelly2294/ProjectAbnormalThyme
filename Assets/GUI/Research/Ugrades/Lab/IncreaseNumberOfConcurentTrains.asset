@@ -10,16 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
-  m_Name: increaseRedSpenders
+  m_Name: IncreaseNumberOfConcurentTrains
   m_EditorClassIdentifier: 
-  title: Market How Fun the Ride is
-  description: Increases likely hood of regular families to attend.
-  cost: 10
+  title: 
+  description: 
+  cost: 0
   image: {fileID: 0}
-  repeats: 1
-  priceScaling: 2
-  effects:
-  - parameter: 5
-    operation: 1
-    amount: 2
+  repeats: 0
+  priceScaling: 0
+  effects: []
   nextUpgrades: []

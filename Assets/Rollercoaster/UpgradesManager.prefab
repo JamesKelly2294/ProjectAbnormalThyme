@@ -43,3 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dd5601dde99344793f86202fec0809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyManager: {fileID: 0}
+  peopleManager: {fileID: 0}
+  trainManager: {fileID: 0}
+  trackManager: {fileID: 0}
+  updateRowPrefab: {fileID: 9081990581669803358, guid: cb0655aa3ae79f7448b8ca111f81f738,
+    type: 3}

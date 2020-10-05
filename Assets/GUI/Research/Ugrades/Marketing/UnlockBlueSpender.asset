@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
-  m_Name: increaseRedSpenders
+  m_Name: UnlockBlueSpender
   m_EditorClassIdentifier: 
-  title: Market How Fun the Ride is
-  description: Increases likely hood of regular families to attend.
-  cost: 10
+  title: Unlock Blue Spender
+  description: 1% Chance of Blue Spender
+  cost: 100
   image: {fileID: 0}
-  repeats: 1
-  priceScaling: 2
+  repeats: 0
+  priceScaling: 0
   effects:
-  - parameter: 5
-    operation: 1
-    amount: 2
-  nextUpgrades: []
+  - parameter: 6
+    operation: 2
+    amount: 0.01
+  nextUpgrades:
+  - {fileID: 11400000, guid: b66386b85e29b5d4583af4bea0a19b58, type: 2}
+  - {fileID: 11400000, guid: d8e7a7a620a760f4697273800516657f, type: 2}

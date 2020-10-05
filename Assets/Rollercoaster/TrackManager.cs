@@ -6,6 +6,8 @@ public class TrackManager : MonoBehaviour
 {
     static TrackManager _instance;
 
+    public float rideExcitementMultiplier = 1;
+
     public static TrackManager Instance
     {
         get

@@ -10,10 +10,12 @@ public class TrainCar : MonoBehaviour
     public List<float> peopleXPositions;
     public float peopleYPosition;
 
+    TrackManager trackManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        trackManager = FindObjectOfType<TrackManager>();
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class TrainCar : MonoBehaviour
                 if ( zone.oneShot ) {
                     person.moneyPrinter.DispenseABill();
                 } else {
-                    person.moneyPrinter.excitement = zone.excitement;
+                    person.moneyPrinter.excitement = zone.excitement * trackManager.rideExcitementMultiplier;
                 }
             }
         } else {

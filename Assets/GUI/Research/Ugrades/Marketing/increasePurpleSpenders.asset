@@ -14,17 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Market how Succulent the Caviar is
   description: Increases the likelyhood of very wealthy guests
-  cost: 1000000
+  cost: 1000
   image: {fileID: 0}
   repeats: 1
   priceScaling: 3
   effects:
-  - parameter: 0
-    operation: 0
+  - parameter: 5
+    operation: 1
     amount: 1.1
-  - parameter: 0
-    operation: 0
+  - parameter: 6
+    operation: 1
+    amount: 1.2
+  - parameter: 7
+    operation: 1
     amount: 2
-  - parameter: 0
-    operation: 0
-    amount: 10
+  nextUpgrades: []

@@ -10,6 +10,8 @@ public class UpgradesManager : MonoBehaviour
     public TrainManager trainManager;
     public TrackManager trackManager;
 
+    public ResearchUpgradeRow updateRowPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class UpgradesManager : MonoBehaviour
                 trainManager.numberOfCars = (int) ApplyOperationOnValue(effect.operation, effect.amount, trainManager.numberOfCars);
                 break;
             case UpgradeParameter.numberOfTrains:
-                trainManager.activeTrainCapacity = (int) ApplyOperationOnValue(effect.operation, effect.amount, trainManager.activeTrainCapacity);
+                trainManager.idleTrainCapacity = (int) ApplyOperationOnValue(effect.operation, effect.amount, trainManager.idleTrainCapacity);
                 break;
             case UpgradeParameter.redSpenderTypeChance:
                 peopleManager.chanceOfRedSpender = ApplyOperationOnValue(effect.operation, effect.amount, peopleManager.chanceOfRedSpender);
@@ -51,12 +53,23 @@ public class UpgradesManager : MonoBehaviour
             case UpgradeParameter.purpleSpenderTypeChance:
                 peopleManager.chanceOfPurpleSpender = ApplyOperationOnValue(effect.operation, effect.amount, peopleManager.chanceOfPurpleSpender);
                 break;
+            case UpgradeParameter.rideExcitement:
+                trackManager.rideExcitementMultiplier = ApplyOperationOnValue(effect.operation, effect.amount, trackManager.rideExcitementMultiplier);
+                break;
+            case UpgradeParameter.numberOfConcurentTrainsAllowedOnTrack:
+                trainManager.activeTrainCapacity = (int)ApplyOperationOnValue(effect.operation, effect.amount, trainManager.activeTrainCapacity);
+                break;
+            case UpgradeParameter.trainCreationRate:
+                trainManager.newTrainInterval = ApplyOperationOnValue(effect.operation, effect.amount, trainManager.newTrainInterval);
+                break;
         }
     }
 
     float ApplyOperationOnValue(UpgradeOperation operation, float amount, float value) {
         if (operation == UpgradeOperation.scale) {
             return value * amount;
+        } else if (operation == UpgradeOperation.set) {
+            return amount;
         } else {
             return value + amount;
         }
