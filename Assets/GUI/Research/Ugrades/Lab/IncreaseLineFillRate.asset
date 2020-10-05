@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Install line managers
   description: Increases the rate of people entering the line
-  cost: 500
+  cost: 10
   image: {fileID: 0}
   repeats: 1
   priceScaling: 3
@@ -22,3 +22,4 @@ MonoBehaviour:
   - parameter: 1
     operation: 1
     amount: 0.5
+  nextUpgrades: []

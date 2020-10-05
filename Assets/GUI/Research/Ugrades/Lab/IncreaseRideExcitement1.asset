@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Tune Ride
   description: Doubles guest excitement
-  cost: 10000
+  cost: 10
   image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   repeats: 1
   priceScaling: 10
@@ -22,3 +22,4 @@ MonoBehaviour:
   - parameter: 4
     operation: 1
     amount: 2
+  nextUpgrades: []

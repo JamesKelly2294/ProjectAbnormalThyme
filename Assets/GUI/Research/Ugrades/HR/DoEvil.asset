@@ -21,6 +21,6 @@ MonoBehaviour:
   effects:
   - parameter: 4
     operation: 1
-    amount: 100
+    amount: 10000
   nextUpgrades:
   - {fileID: 11400000, guid: c0da71b4f5f6b474686931e537d45a9c, type: 2}

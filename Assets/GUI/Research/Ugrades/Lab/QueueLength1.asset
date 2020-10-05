@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Longer Queues
   description: Double the length of the queue
-  cost: 1000
+  cost: 100
   image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   repeats: 1
   priceScaling: 3
@@ -22,3 +22,4 @@ MonoBehaviour:
   - parameter: 0
     operation: 1
     amount: 2
+  nextUpgrades: []

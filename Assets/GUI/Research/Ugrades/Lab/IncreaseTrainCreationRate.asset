@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
   m_Name: IncreaseTrainCreationRate
   m_EditorClassIdentifier: 
-  title: 
-  description: 
+  title: Increase Train Creation Rate
+  description: Fill Trains from the Queue Faster
   cost: 0
   image: {fileID: 0}
-  repeats: 0
+  repeats: 1
   priceScaling: 0
-  effects: []
+  effects:
+  - parameter: 9
+    operation: 1
+    amount: 0.5
   nextUpgrades: []
