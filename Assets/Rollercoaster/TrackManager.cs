@@ -113,7 +113,13 @@ public class TrackManager : MonoBehaviour
 
         if (oldtrack)
         {
-            Destroy(oldtrack.gameObject);
+            if(oldtrack.type == TrackType.End)
+            {
+                oldtrack.transform.position = new Vector3(coordinates.x + 1, coordinates.y, 0);
+            } else
+            {
+                Destroy(oldtrack.gameObject);
+            }
         }
 
         Track newTrack = Instantiate(trackPrefab, transform);

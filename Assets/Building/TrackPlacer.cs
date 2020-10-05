@@ -122,7 +122,11 @@ public class TrackPlacer : MonoBehaviour
     {
         if (IsPlacementValid() && Input.GetMouseButtonDown(0))
         {
-            PlaceBlueprint();
+            var placementPosV3 = trackedCamera.ScreenToWorldPoint(Input.mousePosition);
+            var placementPos = new Vector2Int(Mathf.RoundToInt(placementPosV3.x), Mathf.RoundToInt(placementPosV3.y));
+            var coords = GetSelectedBlueprintCoords();
+            if (placementPos.x != coords.x || placementPos.y != coords.y) { return; }
+            PurchaseAndPlaceBuilding(selectedBuilding, coords);
         }
     }
 
@@ -167,34 +171,31 @@ public class TrackPlacer : MonoBehaviour
         UpdateSelectedBlueprintVisuals();
     }
 
-    void PlaceBlueprint()
+    public void PurchaseAndPlaceBuilding(Building b, Vector2Int coords)
     {
-        var placementPosV3 = trackedCamera.ScreenToWorldPoint(Input.mousePosition);
-        var placementPos = new Vector2Int(Mathf.RoundToInt(placementPosV3.x), Mathf.RoundToInt(placementPosV3.y));
-        var selectedBlueprintCoords = GetSelectedBlueprintCoords();
-
-        if (placementPos.x != selectedBlueprintCoords.x || placementPos.y != selectedBlueprintCoords.y) { return; }
-
-        if (selectedBlueprint == null) { return; }
+        if(b == null) { return; }
         bool success = false;
-        Track newTrack = selectedBuilding.buildingPrefab.GetComponent<Track>();
-        Track oldTrack = trackManager.TrackAt(GetSelectedBlueprintCoords());
+        Track newTrack = b.buildingPrefab.GetComponent<Track>();
+        Track oldTrack = trackManager.TrackAt(coords);
         int totalCost = 0;
+
+        totalCost += newTrack.PurchaseCostForNthTrack(trackManager.CountForTrackType(newTrack.type) + 1);
+        totalCost -= oldTrack.RefundAmount();
+        
+        if(totalCost > moneyManager.currentBalance) { return; }
 
         if (newTrack && oldTrack)
         {
-            newTrack = trackManager.PlaceTrack(newTrack, GetSelectedBlueprintCoords());
+            newTrack = trackManager.PlaceTrack(newTrack, coords);
             success = newTrack != null;
             if (success) { 
-                totalCost -= newTrack.PurchaseCost();
-                totalCost += oldTrack.RefundAmount();
                 success = true;
             }
         }
 
         if(success)
         {
-            moneyManager.currentBalance += totalCost;
+            moneyManager.currentBalance -= totalCost;
         }
     }
 }

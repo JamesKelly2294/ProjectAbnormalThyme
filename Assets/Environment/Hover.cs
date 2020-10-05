@@ -14,13 +14,13 @@ public class Hover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = transform.position;
+        startPosition = transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = startPosition + new Vector3(
+        transform.localPosition = startPosition + new Vector3(
             offsetFromStart.x * Mathf.Sin(Time.time * (1 / period)), 
             offsetFromStart.y * Mathf.Sin(Time.time * (1 / period)), 
             offsetFromStart.z * Mathf.Sin(Time.time * (1 / period)));

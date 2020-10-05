@@ -124,7 +124,14 @@ public class Track : MonoBehaviour, Buyable
     // This can be exploited if we have cost modifiers - should probably cache the old purchase prices?
     public int RefundAmount()
     {
-        return PurchaseCostForNthTrack(trackManager.CountForTrackType(type));
+        if (type == TrackType.End)
+        {
+            return -trackManager.CostToExtendTrack;
+        }
+        else
+        {
+            return PurchaseCostForNthTrack(trackManager.CountForTrackType(type));
+        }
     }
 
     private void OnDestroy()

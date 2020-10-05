@@ -5,21 +5,31 @@ using UnityEngine;
 [RequireComponent(typeof(Track))]
 public class EndTrack : MonoBehaviour
 {
-    public GameObject newTrackPrefab;
+    public Building newTrackBuilding;
+    public GameObject purchasablePopUp;
 
     TrackPlacer trackPlacer;
     TrackManager trackManager;
+    MoneyManager moneyManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        trackPlacer = FindObjectOfType<TrackPlacer>();
         trackManager = FindObjectOfType<TrackManager>();
+        moneyManager = FindObjectOfType<MoneyManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (trackManager.CostToExtendTrack <= moneyManager.currentBalance)
+        {
+            purchasablePopUp.SetActive(true);
+        } else
+        {
+            purchasablePopUp.SetActive(false);
+        }
     }
 
     public void PurchaseNewTrack()
@@ -27,8 +37,6 @@ public class EndTrack : MonoBehaviour
         var coords = new Vector2Int(
             Mathf.RoundToInt(transform.position.x),
             Mathf.RoundToInt(transform.position.y));
-        trackManager.PlaceTrack(newTrackPrefab.GetComponent<Track>(), coords);
-
-        trackManager.PlaceTrack(this.GetComponent<Track>(), coords + Vector2Int.right * 1);
+        trackPlacer.PurchaseAndPlaceBuilding(newTrackBuilding, coords);
     }
 }

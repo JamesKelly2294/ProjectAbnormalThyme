@@ -127,17 +127,24 @@ public class TrainManager : MonoBehaviour
         }
     }
 
-    public void DestroyOldestTrain()
-    {
-        activeTrains.RemoveAt(0);
-    }
-    
     public void GhostifyActiveAndIdleTrains()
     {
         idleTrain?.Ghostify();
         foreach (Train t in activeTrains)
         {
             t.Ghostify();
+        }
+    }
+
+    public void TrainDestroyed(Train t)
+    {
+        if (idleTrain == t)
+        {
+            idleTrain = null;
+        }
+        else
+        {
+            activeTrains.Remove(t);
         }
     }
 }

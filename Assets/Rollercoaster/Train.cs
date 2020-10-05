@@ -47,6 +47,7 @@ public class Train : MonoBehaviour
     public bool initOnAwake;
 
     PeopleManager peopleManager;
+    TrainManager trainManager;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,8 @@ public class Train : MonoBehaviour
     {
         Vector3 offset = new Vector3(0, 0, 0);
         peopleManager = FindObjectOfType<PeopleManager>();
-        
+        trainManager = FindObjectOfType<TrainManager>();
+
         for (int i = 0; i < numberOfCars; i++)
         {
 
@@ -108,6 +110,11 @@ public class Train : MonoBehaviour
         {
             Speed = Mathf.Max(Mathf.Min(Speed, trueTargetSpeed), -trueTargetSpeed);
         }
+
+        if (markedForDeath && Speed <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void LoadTrain() {
@@ -146,5 +153,17 @@ public class Train : MonoBehaviour
             var color = sr.color;
             sr.color = new Color(color.r, color.g, color.b, color.a * 0.25f);
         }
+        MarkForDeath();
+    }
+
+    private bool markedForDeath;
+    public void MarkForDeath()
+    {
+        markedForDeath = true;
+    }
+
+    private void OnDestroy()
+    {
+        trainManager.TrainDestroyed(this);
     }
 }

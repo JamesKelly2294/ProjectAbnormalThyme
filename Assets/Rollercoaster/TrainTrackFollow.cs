@@ -89,6 +89,8 @@ public class TrainTrackFollow : MonoBehaviour
         
         activePaths.First().OnComplete<Tween>(() => {
             targetTrain.onTrack = false;
+            targetTrain.targetSpeed = 0;
+            targetTrain.minimumSpeed = 0;
         } );
     }
 
