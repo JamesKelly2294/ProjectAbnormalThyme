@@ -17,14 +17,16 @@ public class TrainTrackFollow : MonoBehaviour
 
     private List<Track> Tracks
     {
-        get { return TrackManager.Instance.Tracks; }
+        get { return trackManager.Tracks; }
     }
 
     private float _speed;
+    private TrackManager trackManager;
 
     private void Awake()
     {
         activePaths = new List<TweenerCore<Vector3, Path, PathOptions>>();
+        trackManager = FindObjectOfType<TrackManager>();
     }
 
     public void PullUpToStart()
@@ -88,12 +90,6 @@ public class TrainTrackFollow : MonoBehaviour
         activePaths.First().OnComplete<Tween>(() => {
             targetTrain.onTrack = false;
         } );
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     // Update is called once per frame

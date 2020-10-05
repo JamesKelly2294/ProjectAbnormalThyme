@@ -4,22 +4,7 @@ using System.Linq;
 
 public class TrackManager : MonoBehaviour
 {
-    static TrackManager _instance;
-
     public float rideExcitementMultiplier = 1;
-
-    public static TrackManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                GameObject go = new GameObject();
-                _instance = go.AddComponent<TrackManager>();
-            }
-            return _instance;
-        }
-    }
 
     public int MaximumTrackLength { get; private set; }
     public int CurrentSpecialTrackLength { get; private set; }
@@ -30,11 +15,14 @@ public class TrackManager : MonoBehaviour
     }
 
     private Dictionary<TrackType, List<Track>> trackMap = new Dictionary<TrackType, List<Track>>();
+    private Dictionary<TrackType, bool> unlockedTracksMap = new Dictionary<TrackType, bool>();
 
     private void Awake()
     {
-        _instance = this;
         Tracks = new List<Track>();
+
+        unlockedTracksMap.Add(TrackType.Straight, true);
+        unlockedTracksMap.Add(TrackType.Loop, true);
     }
 
     public void RegisterTrack(Track track)
@@ -96,5 +84,10 @@ public class TrackManager : MonoBehaviour
     {
         CurrentSpecialTrackLength = Tracks.Where((t) => (t.type != TrackType.Start && t.type != TrackType.End && t.type != TrackType.Straight)).Count();
         MaximumTrackLength = Tracks.Where((t) => (t.type != TrackType.Start && t.type != TrackType.End)).Count();
+    }
+
+    public bool CanPurchaseTrackOfType(TrackType type)
+    {
+        return unlockedTracksMap.ContainsKey(type) && unlockedTracksMap[type];
     }
 }

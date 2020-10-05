@@ -38,9 +38,8 @@ public class TrainManager : MonoBehaviour
     PeopleManager peopleManager;
 
     GUIProgressBar idleTrainProgressBar;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
         newTrainTimer = newTrainInterval - 1;
         peopleManager = GameObject.Find("PeopleManager")?.GetComponent<PeopleManager>();

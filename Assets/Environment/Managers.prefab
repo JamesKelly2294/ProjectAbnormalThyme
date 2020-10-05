@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 8221350920239346705, guid: 04dde76b19fe9214dbbd1c909b894e53,
         type: 3}
       propertyPath: m_Name
-      value: TrackPathManager
+      value: TrackManager
       objectReference: {fileID: 0}
     - target: {fileID: 8221350920239346707, guid: 04dde76b19fe9214dbbd1c909b894e53,
         type: 3}

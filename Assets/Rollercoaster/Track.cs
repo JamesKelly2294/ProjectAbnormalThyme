@@ -12,8 +12,9 @@ public enum TrackType
     Bank
 }
 
-public class Track : MonoBehaviour
+public class Track : MonoBehaviour, Buyable
 {
+    private TrackManager trackManager;
     public TrackType type;
     public bool isBlueprint;
 
@@ -23,12 +24,17 @@ public class Track : MonoBehaviour
     static Vector3[] localEndWaypoints = new[] { new Vector3(-0.4812305f, -0.3421845f, 0f), new Vector3(-0.2873616f, -0.3393334f, 0f), new Vector3(-0.1562149f, -0.3678436f, 0f), new Vector3(0.482412f, -0.6016266f, 0f), new Vector3(1.172357f, -0.8639196f, 0f) };
     static Vector3[] localPhotowaypoints = new[] { new Vector3(-0.4955589f, -0.3367424f, 0f), new Vector3(-0.4592333f, -0.3367424f, 0f), new Vector3(-0.4180574f, -0.3148686f, 0f), new Vector3(-0.3752416f, -0.2752753f, 0f), new Vector3(-0.3368182f, -0.2106752f, 0f), new Vector3(-0.3228085f, -0.1600355f, 0f), new Vector3(-0.3096237f, -0.1123323f, 0f), new Vector3(-0.2707767f, -0.06280746f, 0f), new Vector3(-0.2014357f, -0.03104913f, 0f), new Vector3(-0.1044894f, -0.05188359f, 0f), new Vector3(0.08525414f, -0.226547f, 0f), new Vector3(0.2575977f, -0.3188751f, 0f), new Vector3(0.4051979f, -0.3367424f, 0f), new Vector3(0.493552f, -0.3367424f, 0f) };
 
+    private void Awake()
+    {
+        trackManager = FindObjectOfType<TrackManager>();
+    }
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
         if (!isBlueprint)
         {
-            TrackManager.Instance.RegisterTrack(this);
+            trackManager.RegisterTrack(this);
         } else
         {
             var srs = GetComponentsInChildren<SpriteRenderer>();
@@ -90,7 +96,12 @@ public class Track : MonoBehaviour
 
     public int PurchaseCost()
     {
-        return PurchaseCostForNthTrack(TrackManager.Instance.CountForTrackType(type) + 1);
+        return PurchaseCostForNthTrack(trackManager.CountForTrackType(type) + 1);
+    }
+
+    public bool IsPurchasable()
+    {
+        return trackManager.CanPurchaseTrackOfType(type);
     }
 
     public int PurchaseCostForNthTrack(int n)
@@ -113,6 +124,11 @@ public class Track : MonoBehaviour
     // This can be exploited if we have cost modifiers - should probably cache the old purchase prices?
     public int RefundAmount()
     {
-        return PurchaseCostForNthTrack(TrackManager.Instance.CountForTrackType(type));
+        return PurchaseCostForNthTrack(trackManager.CountForTrackType(type));
+    }
+
+    private void OnDestroy()
+    {
+        trackManager.UnregisterTrack(this);
     }
 }
