@@ -110,7 +110,7 @@ public class PeopleManager : MonoBehaviour
         int money = 0;
         switch (type) {
             case SpenderType.green:
-                money = Random.Range(1, 10); break;
+                money = Random.Range(1, 19); break;
             case SpenderType.red:
                 money = Random.Range(200, 500); break;
             case SpenderType.blue:

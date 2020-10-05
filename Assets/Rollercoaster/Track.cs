@@ -119,9 +119,9 @@ public class Track : MonoBehaviour, Buyable
             case TrackType.Loop:
                 return Mathf.RoundToInt(100 * (Mathf.Pow(5, n)));
             case TrackType.Photo:
-                return Mathf.RoundToInt(100 * (Mathf.Pow(3.5f, n)));
+                return n == 1 ? 0 : Mathf.RoundToInt(100 * (Mathf.Pow(3.5f, n)));
             case TrackType.Bank:
-                return Mathf.RoundToInt(100 * (Mathf.Pow(4, n)));
+                return n == 1 ? 0 : Mathf.RoundToInt(100 * (Mathf.Pow(4, n)));
             default:
                 return 0;
         }
