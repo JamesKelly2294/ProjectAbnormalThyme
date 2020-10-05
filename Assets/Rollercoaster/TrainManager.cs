@@ -81,7 +81,7 @@ public class TrainManager : MonoBehaviour
 
     void SpawnIdleTrain()
     {
-        if (idleTrainLength > 0 && idleTrain == null)
+        if (idleTrainLength > 0 && idleTrain == null && passengerQueueLength > 0)
         {
             GameObject newIdleTrainGO = Instantiate(trainPrefab);
             idleTrain = newIdleTrainGO.GetComponent<Train>();
@@ -90,6 +90,7 @@ public class TrainManager : MonoBehaviour
             idleTrain.Initialize();
             idleTrain.LoadTrain();
             idleTrain.GetComponent<TrainTrackFollow>().PullUpToStart();
+            idleTrainLength -= 1;
         }
     }
 
@@ -122,7 +123,6 @@ public class TrainManager : MonoBehaviour
 
             activeTrains.Add(idleTrain);
 
-            idleTrainLength -= 1;
             idleTrain = null;
         }
     }
