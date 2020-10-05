@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
 
-    public int currentBalance = 1000;
+    public long currentBalance = 0;
 
     int incomeThisSample = 0;
     LinkedList<int> incomeSamples = new LinkedList<int>();

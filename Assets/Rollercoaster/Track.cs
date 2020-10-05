@@ -75,4 +75,32 @@ public class Track : MonoBehaviour
                 return localStraightWaypoints;
         }
     }
+
+    public int PurchaseCost()
+    {
+        return PurchaseCostForNthTrack(TrackManager.Instance.CountForTrackType(type) + 1);
+    }
+
+    public int PurchaseCostForNthTrack(int n)
+    {
+        switch (type)
+        {
+            case TrackType.Straight:
+                return 0;
+            case TrackType.Loop:
+                return 10;
+            case TrackType.Photo:
+                return 100;
+            case TrackType.Bank:
+                return 1000;
+            default:
+                return 0;
+        }
+    }
+
+    // This can be exploited if we have cost modifiers - should probably cache the old purchase prices?
+    public int RefundAmount()
+    {
+        return PurchaseCostForNthTrack(TrackManager.Instance.CountForTrackType(type));
+    }
 }

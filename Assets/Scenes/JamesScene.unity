@@ -167,7 +167,10 @@ MonoBehaviour:
     type: 3}
   width: 9
   height: 3
+  validPlacementColor: {r: 0.2627451, g: 0.93333334, b: 0.12941177, a: 0.5176471}
+  invalidPlacementColor: {r: 0.93333334, g: 0.15403605, b: 0.12941173, a: 0.5529412}
   trackBlueprints:
+  - {fileID: 6012959284391563127, guid: 51788fc1863b11c4db5b75f48a0ef179, type: 3}
   - {fileID: 917453202233337595, guid: 66ddd7d276e004d4898efac920d69180, type: 3}
   - {fileID: 52255789404719705, guid: 2e8d36a993fe588418b8afc62b05476d, type: 3}
   - {fileID: 7166994470838724217, guid: 18f86dc401154fa4eab3e08301214f64, type: 3}

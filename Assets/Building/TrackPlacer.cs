@@ -9,6 +9,9 @@ public class TrackPlacer : MonoBehaviour
     public int width = 9;
     public int height = 3;
 
+    public Color validPlacementColor;
+    public Color invalidPlacementColor;
+
     private int minX;
     private int maxX;
     private Camera trackedCamera;
@@ -18,7 +21,7 @@ public class TrackPlacer : MonoBehaviour
     public List<GameObject> trackBlueprints;
     public GameObject selectedBlueprint;
 
-    private int selectedBlueprintIndex;
+    private int selectedBlueprintIndex = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +74,28 @@ public class TrackPlacer : MonoBehaviour
             Mathf.Round(selectedBlueprint.transform.position.x), 
             Mathf.Max(0, Mathf.Round(selectedBlueprint.transform.position.y)), 
             0);
+
+        SpriteRenderer highlight = selectedBlueprint.transform.Find("Highlight").gameObject.GetComponent<SpriteRenderer>();
+        highlight.color = IsPlacementValid() ? validPlacementColor : invalidPlacementColor;
+
+    }
+
+    bool IsPlacementValid()
+    {
+        if (!selectedBlueprint) { return false; }
+
+        Vector2Int coords = GetSelectedBlueprintCoords();
+
+        if (coords.y != 0) { return false; }
+
+        return true;
+    }
+
+    Vector2Int GetSelectedBlueprintCoords()
+    {
+        return new Vector2Int(
+            Mathf.RoundToInt(selectedBlueprint.transform.position.x),
+            Mathf.Max(0, Mathf.RoundToInt(selectedBlueprint.transform.position.y)));
     }
 
     void PollInput()
@@ -88,6 +113,10 @@ public class TrackPlacer : MonoBehaviour
         {
             newSelectedBlueprintIndex = 2;
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            newSelectedBlueprintIndex = 3;
+        }
 
         if (newSelectedBlueprintIndex != -2)
         {
@@ -104,6 +133,7 @@ public class TrackPlacer : MonoBehaviour
                 selectedBlueprint = Instantiate(newSelectedBlueprint);
                 GameObject highlight = Instantiate(selectedBlueprintHighlightPrefab);
                 highlight.transform.parent = selectedBlueprint.transform;
+                highlight.transform.name = "Highlight";
                 var srs = highlight.GetComponentsInChildren<SpriteRenderer>();
                 for (int i = 0; i < srs.Length; i++)
                 {
