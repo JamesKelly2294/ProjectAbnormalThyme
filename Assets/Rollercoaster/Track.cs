@@ -111,7 +111,7 @@ public class Track : MonoBehaviour, Buyable
             case TrackType.Straight:
                 return 0;
             case TrackType.Loop:
-                return 10;
+                return Mathf.RoundToInt(100 * (Mathf.Pow(5, n)));
             case TrackType.Photo:
                 return 100;
             case TrackType.Bank:

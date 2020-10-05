@@ -41,6 +41,7 @@ public class TrackManager : MonoBehaviour
 
             trackMap[track.type].Add(track);
             CalculateTrackLengths();
+            UpdateCostToExtendTrack();
         }
     }
 
@@ -51,6 +52,7 @@ public class TrackManager : MonoBehaviour
             Tracks.RemoveAll((t) => t == track);
             trackMap[track.type].Remove(track);
             CalculateTrackLengths();
+            UpdateCostToExtendTrack();
         }
     }
 
@@ -78,6 +80,18 @@ public class TrackManager : MonoBehaviour
         if (coordinates.y >= t.Height) { return null; }
 
         return t;
+    }
+
+    private int _costToExtendTrack;
+    public int CostToExtendTrack { get; private set; }
+
+    public void UpdateCostToExtendTrack()
+    {
+        const int baseCost = 1000;
+        const float rateOfGrowth = 2.0f;
+        int numOwned = MaximumTrackLength - 5; // start with 5, so subtract from total. TODO(james) - calculate starting tracks dynamically?
+
+        CostToExtendTrack = Mathf.RoundToInt(baseCost * (Mathf.Pow(rateOfGrowth, numOwned)));
     }
 
     void CalculateTrackLengths()

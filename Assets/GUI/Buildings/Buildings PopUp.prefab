@@ -1108,6 +1108,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 4881990991390475864, guid: 7e63bd5f9f7be0f409d090ec1cbb26a4,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2,
+        type: 2}
+    - target: {fileID: 4881990991390475864, guid: 7e63bd5f9f7be0f409d090ec1cbb26a4,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
     - target: {fileID: 8705471950677119359, guid: 7e63bd5f9f7be0f409d090ec1cbb26a4,
         type: 3}
       propertyPath: m_LocalPosition.x
