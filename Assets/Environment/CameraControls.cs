@@ -16,6 +16,35 @@ public class CameraControls : MonoBehaviour
 
     // Update is called once per frame
     void Update() { 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //inefficient lol
+            var arr = Resources.FindObjectsOfTypeAll(typeof(ResearchPopUp));
+            if (arr != null && arr.Length > 0)
+            {
+                ((ResearchPopUp)arr[0]).ToggleOpen();
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            FindObjectOfType<TrackPlacer>()?.SelectBuilding(null);
+        }
+
+        for (KeyCode i = KeyCode.Alpha1; i <= KeyCode.Alpha9; i++)
+        {
+            //inefficient lol
+            if (Input.GetKeyDown(i))
+            {
+                int index = i - KeyCode.Alpha1;
+                var buildings = FindObjectOfType<TracksTab>()?.buildings;
+                if (buildings != null && buildings.Count > index)
+                {
+                    FindObjectOfType<TrackPlacer>()?.SelectBuilding(buildings[index]);
+                }
+            }
+        }
+
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.position = new Vector3(Mathf.Min(speed * Time.deltaTime + transform.position.x, maxDistance), transform.position.y, transform.position.z);

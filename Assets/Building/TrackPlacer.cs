@@ -20,9 +20,7 @@ public class TrackPlacer : MonoBehaviour
 
     public GameObject selectedBlueprint;
     public Building selectedBuilding;
-
-    private int selectedBlueprintIndex = -1;
-
+    
     private TrackManager trackManager;
     private MoneyManager moneyManager;
 
@@ -122,59 +120,62 @@ public class TrackPlacer : MonoBehaviour
 
     void PollInput()
     {
-        int newSelectedBlueprintIndex = -2;
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            newSelectedBlueprintIndex = 0;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            newSelectedBlueprintIndex = 1;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            newSelectedBlueprintIndex = 2;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            newSelectedBlueprintIndex = 3;
-        }
-
-        if (newSelectedBlueprintIndex != -2)
-        {
-            if (newSelectedBlueprintIndex == selectedBlueprintIndex)
-            {
-                newSelectedBlueprintIndex = -1;
-            }
-
-            Destroy(selectedBlueprint);
-            selectedBlueprint = null;
-            if (newSelectedBlueprintIndex >= 0 && newSelectedBlueprintIndex < tracksTab.buildings.Count)
-            {
-                selectedBuilding = tracksTab.buildings[newSelectedBlueprintIndex];
-                selectedBlueprint = Instantiate(selectedBuilding.buyableBlueprintPrefab);
-                GameObject highlight = Instantiate(selectedBlueprintHighlightPrefab);
-                highlight.transform.parent = selectedBlueprint.transform;
-                highlight.transform.name = "Highlight";
-                var srs = highlight.GetComponentsInChildren<SpriteRenderer>();
-                for (int i = 0; i < srs.Length; i++)
-                {
-                    srs[i].sortingOrder -= 10;
-                }
-            } 
-
-            selectedBlueprintIndex = newSelectedBlueprintIndex;
-        }
-
         if (IsPlacementValid() && Input.GetMouseButtonDown(0))
         {
             PlaceBlueprint();
         }
     }
 
+    public void SelectBuilding(Building b)
+    {
+        if (selectedBuilding == b)
+        {
+            b = null;
+        }
+
+        if (b != null)
+        {
+            Buyable buyable = b.GetBuyable();
+            if (buyable is Object)
+            {
+                buyable = (Buyable)Instantiate((Object)buyable, transform);
+                if (!buyable.IsPurchasable()) { b = null; }
+                Destroy((Object)buyable);
+            }
+        }
+
+        Destroy(selectedBlueprint);
+        selectedBuilding = null;
+        selectedBlueprint = null;
+
+        if (b == null)
+        {
+            return;
+        }
+
+        GameObject newBlueprint = b.buyableBlueprintPrefab;
+        selectedBuilding = b;
+        selectedBlueprint = Instantiate(selectedBuilding.buyableBlueprintPrefab);
+        GameObject highlight = Instantiate(selectedBlueprintHighlightPrefab);
+        highlight.transform.parent = selectedBlueprint.transform;
+        highlight.transform.name = "Highlight";
+        var srs = highlight.GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < srs.Length; i++)
+        {
+            srs[i].sortingOrder -= 10;
+        }
+        UpdateSelectedBlueprintVisuals();
+    }
+
     void PlaceBlueprint()
     {
-        if(selectedBlueprint == null) { return; }
+        var placementPosV3 = trackedCamera.ScreenToWorldPoint(Input.mousePosition);
+        var placementPos = new Vector2Int(Mathf.RoundToInt(placementPosV3.x), Mathf.RoundToInt(placementPosV3.y));
+        var selectedBlueprintCoords = GetSelectedBlueprintCoords();
+
+        if (placementPos.x != selectedBlueprintCoords.x || placementPos.y != selectedBlueprintCoords.y) { return; }
+
+        if (selectedBlueprint == null) { return; }
         bool success = false;
         Track newTrack = selectedBuilding.buildingPrefab.GetComponent<Track>();
         Track oldTrack = trackManager.TrackAt(GetSelectedBlueprintCoords());

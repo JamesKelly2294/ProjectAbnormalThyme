@@ -21,21 +21,22 @@ public class BuildingSlot : MonoBehaviour
     public TrackType trackType;
 
     Buyable _buyable;
+    TrackPlacer _trackPlacer;
 
     // Start is called before the first frame update
     public void Init()
     {
-        if(_building == null) { return; }
+        _trackPlacer = FindObjectOfType<TrackPlacer>();
+        if (_building == null) { return; }
 
 
         image.sprite = _building.previewImage;
-        foreach (var component in _building.buyableBlueprintPrefab.GetComponents<MonoBehaviour>())
+
+
+        Buyable buyable = _building.GetBuyable();
+        if (buyable is Object)
         {
-            if (component is Buyable)
-            {
-                MonoBehaviour buyableBehavior = Instantiate(component, transform);
-                _buyable = (Buyable)buyableBehavior;
-            }
+            _buyable = (Buyable)Instantiate((Object)buyable, transform);
         }
     }
 
@@ -55,5 +56,10 @@ public class BuildingSlot : MonoBehaviour
                 buyButtonPriceTMP.text = _buyable.PurchaseCost().ToString();
             }
         }
+    }
+
+    public void BuildingSelected()
+    {
+        _trackPlacer.SelectBuilding(_building);
     }
 }
