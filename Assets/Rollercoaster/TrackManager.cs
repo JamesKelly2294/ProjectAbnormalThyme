@@ -75,6 +75,21 @@ public class TrackManager : MonoBehaviour
         }
     }
 
+    public Track TrackAt(Vector2Int coordinates)
+    {
+        if (Tracks.Count <= 0) { return null; }
+
+        coordinates = new Vector2Int(coordinates.x - Mathf.RoundToInt(Tracks.First().transform.position.x), coordinates.y);
+
+        if (coordinates.x < 0 || coordinates.x >= Tracks.Count) { return null; }
+
+        Track t = Tracks[coordinates.x];
+
+        if (coordinates.y >= t.Height) { return null; }
+
+        return t;
+    }
+
     void CalculateTrackLengths()
     {
         CurrentSpecialTrackLength = Tracks.Where((t) => (t.type != TrackType.Start && t.type != TrackType.End && t.type != TrackType.Straight)).Count();

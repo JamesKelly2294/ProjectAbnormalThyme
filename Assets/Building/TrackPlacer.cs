@@ -23,9 +23,15 @@ public class TrackPlacer : MonoBehaviour
 
     private int selectedBlueprintIndex = -1;
 
+    private TrackManager trackManager;
+    private MoneyManager moneyManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        trackManager = FindObjectOfType<TrackManager>();
+        moneyManager = FindObjectOfType<MoneyManager>();
+
         trackedCamera = Camera.main;
         minX = Mathf.FloorToInt(trackedCamera.transform.position.x) - Mathf.FloorToInt(width / 2);
         maxX = Mathf.FloorToInt(trackedCamera.transform.position.x) + Mathf.CeilToInt(width / 2);
@@ -87,6 +93,19 @@ public class TrackPlacer : MonoBehaviour
         Vector2Int coords = GetSelectedBlueprintCoords();
 
         if (coords.y != 0) { return false; }
+
+        Track newTrack = selectedBlueprint.GetComponent<Track>();
+        int newTrackCost = newTrack.PurchaseCost();
+        
+        Track oldTrack = trackManager.TrackAt(GetSelectedBlueprintCoords());
+        if (!oldTrack) { return false; } // can only replace existing tracks
+        if (oldTrack.type == newTrack.type) { return false; }
+        if (oldTrack.type == TrackType.Start || oldTrack.type == TrackType.End) { return false; }
+        int oldTrackRefund = newTrack.RefundAmount();
+        
+        int totalCost = oldTrackRefund + newTrackCost;
+
+        if (moneyManager.currentBalance < totalCost) { return false; }
 
         return true;
     }

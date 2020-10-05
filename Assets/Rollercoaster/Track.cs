@@ -45,6 +45,18 @@ public class Track : MonoBehaviour
         
     }
 
+    public int Height
+    {
+        get
+        {
+            switch (type)
+            {
+                default:
+                    return 1;
+            }
+        }
+    }
+
     public int Width
     {
         get
