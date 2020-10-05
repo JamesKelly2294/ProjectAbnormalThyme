@@ -16,18 +16,23 @@ public class ApplyMinSpeedReduction : MonoBehaviour
     private void Start()
     {
         trackManager = FindObjectOfType<TrackManager>();
+        minSpeedReset.enabled = false;
     }
 
     float cachedMinSpeed;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!trackManager.IsUpgradeApplied(requiredUpgrade)) { minSpeedReset.enabled = false; return; }
+        if (!trackManager.IsUpgradeApplied(requiredUpgrade)) {
+            minSpeedReset.gameObject.SetActive(false);
+            return;
+        } else
+        {
+            minSpeedReset.gameObject.SetActive(true);
+        }
 
         TrainCarFront trainCar = other.gameObject.GetComponent<TrainCarFront>();
         if (trainCar != null)
         {
-            cachedMinSpeed = trainCar.Train.minimumSpeed;
-            minSpeedReset.resetSpeed = cachedMinSpeed;
             if (isMultiplier)
             {
                 trainCar.Train.minimumSpeed *= speedReduction;
