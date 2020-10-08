@@ -43,7 +43,12 @@ public class StartTrack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (trackManager.IsUpgradeApplied(TrackTypeUpgrade.TrainOMatic) && trainManager.IsIdleTrainWaiting() && !_timerTicking)
+        if(!trainManager.IsIdleTrainWaiting())
+        {
+            t = 0;
+            progressBarProgress.enabled = false;
+            _timerTicking = false;
+        } else if (trackManager.IsUpgradeApplied(TrackTypeUpgrade.TrainOMatic) && trainManager.IsIdleTrainWaiting() && !_timerTicking)
         {
             t = 0;
             _timerTicking = true;
@@ -60,10 +65,12 @@ public class StartTrack : MonoBehaviour
 
             if (t >= trackManager.AutoTrainLauncherTime())
             {
-                t = 0;
-                progressBarProgress.enabled = false;
-                trainManager.SendNewTrain();
-                _timerTicking = false;
+                if (trainManager.SendNewTrain())
+                {
+                    t = 0;
+                    progressBarProgress.enabled = false;
+                    _timerTicking = false;
+                }
             }
         }
 
@@ -102,5 +109,10 @@ public class StartTrack : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void SendNewTrain()
+    {
+        trainManager.SendNewTrain();
     }
 }

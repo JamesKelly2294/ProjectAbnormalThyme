@@ -100,7 +100,7 @@ public class Track : MonoBehaviour, Buyable
         }
     }
 
-    public int PurchaseCost()
+    public long PurchaseCost()
     {
         return PurchaseCostForNthTrack(trackManager.CountForTrackType(type) + 1);
     }
@@ -110,25 +110,25 @@ public class Track : MonoBehaviour, Buyable
         return trackManager.CanPurchaseTrackOfType(type);
     }
 
-    public int PurchaseCostForNthTrack(int n)
+    public long PurchaseCostForNthTrack(int n)
     {
         switch (type)
         {
             case TrackType.Straight:
                 return 0;
             case TrackType.Loop:
-                return Mathf.RoundToInt(100 * (Mathf.Pow(5, n)));
+                return (long)Mathf.Round(100 * (Mathf.Pow(5, n)));
             case TrackType.Photo:
-                return n == 1 ? 0 : Mathf.RoundToInt(100 * (Mathf.Pow(3.5f, n)));
+                return n == 1 ? 0 : (long)Mathf.Round(100 * (Mathf.Pow(3.5f, n)));
             case TrackType.Bank:
-                return n == 1 ? 0 : Mathf.RoundToInt(100 * (Mathf.Pow(4, n)));
+                return n == 1 ? 0 : (long)Mathf.Round(100 * (Mathf.Pow(4, n)));
             default:
                 return 0;
         }
     }
 
     // This can be exploited if we have cost modifiers - should probably cache the old purchase prices?
-    public int RefundAmount()
+    public long RefundAmount()
     {
         if (type == TrackType.End)
         {

@@ -4,6 +4,7 @@ using System.Linq;
 
 public class TrackManager : MonoBehaviour
 {
+    const int MAX_TRACK_LENGTH = 16;
     public float rideExcitementMultiplier = 1;
 
     public int MaximumTrackLength { get; private set; }
@@ -72,6 +73,7 @@ public class TrackManager : MonoBehaviour
             trackMap[track.type].Add(track);
             CalculateTrackLengths();
             UpdateCostToExtendTrack();
+            TrackCanBeExtended = !(Tracks.Count >= MAX_TRACK_LENGTH);
         }
     }
 
@@ -83,6 +85,7 @@ public class TrackManager : MonoBehaviour
             trackMap[track.type].Remove(track);
             CalculateTrackLengths();
             UpdateCostToExtendTrack();
+            TrackCanBeExtended = !(Tracks.Count >= MAX_TRACK_LENGTH);
         }
     }
 
@@ -114,6 +117,7 @@ public class TrackManager : MonoBehaviour
 
     private int _costToExtendTrack;
     public int CostToExtendTrack { get; private set; }
+    public bool TrackCanBeExtended { get; private set; }
 
     public void UpdateCostToExtendTrack()
     {

@@ -11,6 +11,7 @@ public class ColliderButton : MonoBehaviour
     {
         if (buttonPressed != null)
         {
+            AudioManager.main.PlayButtonClick();
             buttonPressed.Invoke();
         }
     }

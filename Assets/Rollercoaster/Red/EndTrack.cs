@@ -23,7 +23,7 @@ public class EndTrack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (trackManager.CostToExtendTrack <= moneyManager.currentBalance)
+        if (trackManager.TrackCanBeExtended && trackManager.CostToExtendTrack <= moneyManager.currentBalance)
         {
             purchasablePopUp.SetActive(true);
         } else
@@ -34,6 +34,7 @@ public class EndTrack : MonoBehaviour
 
     public void PurchaseNewTrack()
     {
+        if(!trackManager.TrackCanBeExtended) { return; }
         var coords = new Vector2Int(
             Mathf.RoundToInt(transform.position.x),
             Mathf.RoundToInt(transform.position.y));

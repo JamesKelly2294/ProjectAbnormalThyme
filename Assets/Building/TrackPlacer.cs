@@ -89,22 +89,22 @@ public class TrackPlacer : MonoBehaviour
 
     bool IsPlacementValid()
     {
-        if (!selectedBlueprint) { return false; }
+        if (selectedBlueprint == null) { return false; }
 
         Vector2Int coords = GetSelectedBlueprintCoords();
 
         if (coords.y != 0) { return false; }
 
         Track newTrack = selectedBlueprint.GetComponent<Track>();
-        int newTrackCost = newTrack.PurchaseCost();
+        long newTrackCost = newTrack.PurchaseCost();
         
         Track oldTrack = trackManager.TrackAt(GetSelectedBlueprintCoords());
         if (!oldTrack) { return false; } // can only replace existing tracks
         if (oldTrack.type == newTrack.type) { return false; }
         if (oldTrack.type == TrackType.Start || oldTrack.type == TrackType.End) { return false; }
-        int oldTrackRefund = oldTrack.RefundAmount();
-        
-        int totalCost = -oldTrackRefund + newTrackCost;
+        long oldTrackRefund = oldTrack.RefundAmount();
+
+        long totalCost = -oldTrackRefund + newTrackCost;
 
         if (moneyManager.currentBalance < totalCost) { return false; }
 
@@ -126,7 +126,16 @@ public class TrackPlacer : MonoBehaviour
             var placementPos = new Vector2Int(Mathf.RoundToInt(placementPosV3.x), Mathf.RoundToInt(placementPosV3.y));
             var coords = GetSelectedBlueprintCoords();
             if (placementPos.x != coords.x || placementPos.y != coords.y) { return; }
-            PurchaseAndPlaceBuilding(selectedBuilding, coords);
+            if (PurchaseAndPlaceBuilding(selectedBuilding, coords))
+            {
+                AudioManager.main.PlayButtonClick();
+            } else
+            {
+                AudioManager.main.PlayButtonClickFailure();
+            }
+        } else if (selectedBlueprint != null && Input.GetMouseButtonDown(0))
+        {
+            AudioManager.main.PlayButtonClickFailure();
         }
     }
 
@@ -171,18 +180,24 @@ public class TrackPlacer : MonoBehaviour
         UpdateSelectedBlueprintVisuals();
     }
 
-    public void PurchaseAndPlaceBuilding(Building b, Vector2Int coords)
+    public bool PurchaseAndPlaceBuilding(Building b, Vector2Int coords)
     {
-        if(b == null) { return; }
+        if(b == null)
+        {
+            return false;
+        }
         bool success = false;
         Track newTrack = b.buildingPrefab.GetComponent<Track>();
         Track oldTrack = trackManager.TrackAt(coords);
-        int totalCost = 0;
+        long totalCost = 0;
 
         totalCost += newTrack.PurchaseCostForNthTrack(trackManager.CountForTrackType(newTrack.type) + 1);
         totalCost -= oldTrack.RefundAmount();
         
-        if(totalCost > moneyManager.currentBalance) { return; }
+        if(totalCost > moneyManager.currentBalance)
+        {
+            return false;
+        }
 
         if (newTrack && oldTrack)
         {
@@ -196,6 +211,12 @@ public class TrackPlacer : MonoBehaviour
         if(success)
         {
             moneyManager.currentBalance -= totalCost;
+            return true;
         }
+        else
+        {
+            return false;
+        }
+
     }
 }

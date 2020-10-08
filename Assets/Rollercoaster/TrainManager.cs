@@ -113,10 +113,11 @@ public class TrainManager : MonoBehaviour
         }
     }
     
-    public void SendNewTrain()
+    public bool SendNewTrain()
     {
         if (idleTrain && !IsTrackFull() && idleTrain.isWaiting)
         {
+            AudioManager.main.PlayOneShot(AudioManager.main.trainLaunch, 0.5f);
             idleTrain.IsBrakingFullStop = false;
             idleTrain.targetSpeed = 2.0f;
             idleTrain.brakingPower = 0.0f;
@@ -124,7 +125,9 @@ public class TrainManager : MonoBehaviour
             activeTrains.Add(idleTrain);
 
             idleTrain = null;
+            return true;
         }
+        return false;
     }
 
     public void GhostifyActiveAndIdleTrains()

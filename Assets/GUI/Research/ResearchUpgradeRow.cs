@@ -19,7 +19,7 @@ public class ResearchUpgradeRow : MonoBehaviour
 
     public int timesBought = 0;
 
-    int _currentCost = 0;
+    long _currentCost = 0;
     bool canBuy = false;
 
     UpgradesManager upgradesManager;
@@ -104,12 +104,21 @@ public class ResearchUpgradeRow : MonoBehaviour
         titleTMP.text = upgrade.title + (timesBought > 0 ? " (" + (timesBought + 1) + ")" : "");
         descriptionTMP.text = upgrade.description;
         image.sprite = upgrade.image;
-        buyButtonPriceTMP.text = "" + string.Format("{0:#,0}", CurrentCost());
+
+        var cost = CurrentCost();
+        if (cost > 100_000)
+        {
+            buyButtonPriceTMP.text = "" + string.Format("{0:#.###E+00}", cost);
+        }
+        else
+        {
+            buyButtonPriceTMP.text = "" + string.Format("{0:#,0}", cost);
+        }
     }
 
-    int CurrentCost()
+    long CurrentCost()
     {
-        return (int)(Mathf.Pow(upgrade.priceScaling, timesBought) * upgrade.cost);
+        return (long)(Mathf.Pow(upgrade.priceScaling, timesBought) * upgrade.cost);
     }
 
     void UpdateLabelForPurchase() {

@@ -61,6 +61,7 @@ public class MoneyPrinter : MonoBehaviour
             moneyManager.AddIncome(moneyPrefab.Value);
         }
 
+        AudioManager.main.PlayMoneyEffect();
 
         Money instance = Instantiate(moneyPrefab);
         instance.t = Random.Range(0, instance.animationTime);

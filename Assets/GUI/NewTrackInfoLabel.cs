@@ -20,6 +20,19 @@ public class NewTrackInfoLabel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        label.text = "" + string.Format("{0:#,0}", trackManager.CostToExtendTrack);
+        if (trackManager.TrackCanBeExtended)
+        {
+            if (trackManager.CostToExtendTrack > 100_000)
+            {
+                label.text = "" + string.Format("{0:#.###E+00}", trackManager.CostToExtendTrack);
+            }
+            else
+            {
+                label.text = "" + string.Format("{0:#,0}", trackManager.CostToExtendTrack);
+            }
+        } else
+        {
+            label.enabled = false;
+        }
     }
 }

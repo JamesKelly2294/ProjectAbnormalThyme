@@ -17,8 +17,8 @@ public class MoneyManager : MonoBehaviour
     }
     public long currentBalance = 0;
 
-    int incomeThisSample = 0;
-    LinkedList<int> incomeSamples = new LinkedList<int>();
+    long incomeThisSample = 0;
+    LinkedList<long> incomeSamples = new LinkedList<long>();
     public float timePerSample = 1f;
     public int maxSamples = 30;
     public float averageIncomePerSecond = 0;
@@ -92,12 +92,12 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public void AddIncome(int income) {
+    public void AddIncome(long income) {
         currentBalance += income;
         incomeThisSample += income;
     }
 
-    public void AddExpense(int expense) {
+    public void AddExpense(long expense) {
         currentBalance -= expense;
     }
 
@@ -107,9 +107,9 @@ public class MoneyManager : MonoBehaviour
         }
 
         incomeSamples.AddFirst(incomeThisSample);
-        incomeThisSample = 0;    
+        incomeThisSample = 0;
 
-        int totalIncomeInCurrentSamples = 0;
+        long totalIncomeInCurrentSamples = 0;
         foreach (var sample in incomeSamples)
         {
             totalIncomeInCurrentSamples += sample;

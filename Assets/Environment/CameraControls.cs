@@ -22,12 +22,14 @@ public class CameraControls : MonoBehaviour
             var arr = Resources.FindObjectsOfTypeAll(typeof(ResearchPopUp));
             if (arr != null && arr.Length > 0)
             {
+                AudioManager.main.PlayButtonClick();
                 ((ResearchPopUp)arr[0]).ToggleOpen();
             }
         }
 
         if (Input.GetMouseButtonDown(1))
         {
+            AudioManager.main.PlayButtonClick();
             FindObjectOfType<TrackPlacer>()?.SelectBuilding(null);
         }
 
@@ -40,6 +42,7 @@ public class CameraControls : MonoBehaviour
                 var buildings = FindObjectOfType<TracksTab>()?.buildings;
                 if (buildings != null && buildings.Count > index)
                 {
+                    AudioManager.main.PlayButtonClick();
                     FindObjectOfType<TrackPlacer>()?.SelectBuilding(buildings[index]);
                 }
             }
@@ -58,6 +61,7 @@ public class CameraControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // TODO(james) - calculate midpoint of traintrack, center camera there?
+            AudioManager.main.PlayButtonClick();
             transform.position = new Vector3(0, transform.position.y, transform.position.z);
         }
     }

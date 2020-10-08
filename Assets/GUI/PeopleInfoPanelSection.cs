@@ -19,6 +19,13 @@ public class PeopleInfoPanelSection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        people.text = "" + string.Format("{0:#,0}/{1:#,0}", peopleManager.peopleInLine.Count, peopleManager.maxLineLength);
+        if (peopleManager.peopleInLine.Count > 1000 || peopleManager.maxLineLength > 1000)
+        {
+            people.text = "" + string.Format("{0:#.#E+00}/{1:#.#E+00}", peopleManager.peopleInLine.Count, peopleManager.maxLineLength);
+        }
+        else
+        {
+            people.text = "" + string.Format("{0:#,0}/{1:#,0}", peopleManager.peopleInLine.Count, peopleManager.maxLineLength);
+        }
     }
 }

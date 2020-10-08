@@ -21,7 +21,21 @@ public class MoneyInfoPanelSection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        balance.text = "" + string.Format("{0:#,0}", moneyManager.currentBalance);
-        averageIncome.text = "" + string.Format("{0:#,0.00}", moneyManager.averageIncomePerSecond) + "/s";
+        if (moneyManager.currentBalance > 100_000)
+        {
+            balance.text = "" + string.Format("{0:#.###E+00}", moneyManager.currentBalance);
+        } else
+        {
+            balance.text = "" + string.Format("{0:#,0}", moneyManager.currentBalance);
+        }
+
+        if (moneyManager.averageIncomePerSecond > 10_000)
+        {
+            averageIncome.text = "" + string.Format("{0:#.###E+00}", moneyManager.averageIncomePerSecond + "/s");
+        }
+        else
+        {
+            averageIncome.text = "" + string.Format("{0:#,0.00}", moneyManager.averageIncomePerSecond + "/s");
+        }
     }
 }

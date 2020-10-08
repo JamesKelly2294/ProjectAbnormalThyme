@@ -53,7 +53,15 @@ public class BuildingSlot : MonoBehaviour
             } else
             {
                 image.color = Color.white;
-                buyButtonPriceTMP.text = "" + string.Format("{0:#,0}", _buyable.PurchaseCost());
+                var cost = _buyable.PurchaseCost();
+                if (cost > 100_000)
+                {
+                    buyButtonPriceTMP.text = "" + string.Format("{0:#.###E+00}", cost);
+                }
+                else
+                {
+                    buyButtonPriceTMP.text = "" + string.Format("{0:#,0}", cost);
+                }
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface Buyable
 {
-    int PurchaseCost();
+    long PurchaseCost();
     bool IsPurchasable();
 }
 
