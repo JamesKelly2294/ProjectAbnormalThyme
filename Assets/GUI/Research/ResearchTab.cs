@@ -16,17 +16,26 @@ public class ResearchTab : MonoBehaviour
     {
         upgrades.Sort((first, second) =>
         {
-            if (first.repeats == second.repeats)
+            if (first.sortingPriority != second.sortingPriority)
             {
-                return first.cost.CompareTo(second.cost);
-            } else
+                return first.sortingPriority.CompareTo(second.sortingPriority);
+            }
+            else
             {
-                if (first.repeats)
+                if (first.repeats == second.repeats)
                 {
-                    return 1;
-                } else
+                    return first.title.CompareTo(second.title);
+                }
+                else
                 {
-                    return -1;
+                    if (first.repeats)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
                 }
             }
         });

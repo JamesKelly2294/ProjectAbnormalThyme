@@ -32,7 +32,7 @@ public class StartTrack : MonoBehaviour
     void Start()
     {
         trainManager = GameObject.Find("TrainManager").GetComponent<TrainManager>();
-        trackManager = FindObjectOfType<TrackManager>();
+        trackManager = TrackManager.Instance;
 
         progressBarProgress.enabled = false;
     }

@@ -62,40 +62,47 @@ public class ResearchUpgradeRow : MonoBehaviour
         }
 
         // Sort rows
-        //GameObject holder = new GameObject();
-        //var upgrades = new List<ResearchUpgradeRow>();
-        //for (int i = oldParent.childCount - 1; i >= 0; i--)
-        //{
-        //    var child = oldParent.GetChild(i);
-        //    child.transform.SetParent(holder.transform, false);
-        //    upgrades.Add(child.GetComponent<ResearchUpgradeRow>());
-        //}
+        GameObject holder = new GameObject();
+        var upgrades = new List<ResearchUpgradeRow>();
+        for (int i = oldParent.childCount - 1; i >= 0; i--)
+        {
+            var child = oldParent.GetChild(i);
+            child.transform.SetParent(holder.transform, false);
+            upgrades.Add(child.GetComponent<ResearchUpgradeRow>());
+        }
 
-        //upgrades.Sort((first, second) =>
-        //{
-        //    if (first.upgrade.repeats == second.upgrade.repeats)
-        //    {
-        //        return first.upgrade.cost.CompareTo(second.upgrade.cost);
-        //    }
-        //    else
-        //    {
-        //        if (first.upgrade.repeats)
-        //        {
-        //            return 1;
-        //        }
-        //        else
-        //        {
-        //            return -1;
-        //        }
-        //    }
-        //});
+        upgrades.Sort((first, second) =>
+        {
+            if (first.upgrade.sortingPriority != second.upgrade.sortingPriority)
+            {
+                return first.upgrade.sortingPriority.CompareTo(second.upgrade.sortingPriority);
+            }
+            else
+            {
+                if (first.upgrade.repeats == second.upgrade.repeats)
+                {
+                    return first.upgrade.title.CompareTo(second.upgrade.title);
+                }
+                else
+                {
+                    if (first.upgrade.repeats)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
+                }
+            }
+        });
 
-        //foreach (var row in upgrades)
-        //{
-        //    row.transform.SetParent(oldParent, false);
-        //}
+        foreach (var row in upgrades)
+        {
+            row.transform.SetParent(oldParent, false);
+        }
 
-        //Destroy(holder);
+        Destroy(holder);
     }
 
     void UpdateLabels() {

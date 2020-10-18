@@ -10,22 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
-  m_Name: increasePurpleSpenders
+  m_Name: IncreaseRed
   m_EditorClassIdentifier: 
-  title: Market how Succulent the Caviar is
-  description: Increases the likelyhood of Bezos and his friends showing up
-  cost: 1000
-  image: {fileID: 21300000, guid: b791b384402777d419543993585e9b75, type: 3}
+  title: Set expectations
+  description: Parkgoers need to understand that we are a high-class establishment.
+    They should bring more cash. (x2 red bill value)
+  cost: 2000
+  image: {fileID: 21300000, guid: e2ba6f0e7f1dafa419a2c3a307266501, type: 3}
   repeats: 1
-  priceScaling: 10
+  priceScaling: 3.75
+  sortingPriority: 2
   effects:
-  - parameter: 5
-    operation: 1
-    amount: 1.1
-  - parameter: 6
-    operation: 1
-    amount: 1.2
-  - parameter: 7
+  - parameter: 14
     operation: 1
     amount: 2
   nextUpgrades: []

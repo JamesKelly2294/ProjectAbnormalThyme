@@ -7,24 +7,24 @@ public class CameraControls : MonoBehaviour
     public float speed = 2.0f;
     public float minDistance = 0;
     public float maxDistance = 9.5f;
+    ResearchPopUp researchPopUp;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        var popupGOs = Resources.FindObjectsOfTypeAll(typeof(ResearchPopUp));
+        if (popupGOs != null && popupGOs.Length > 0)
+        {
+            researchPopUp = ((ResearchPopUp)popupGOs[0]);
+        }
     }
 
     // Update is called once per frame
     void Update() { 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && researchPopUp != null)
         {
-            //inefficient lol
-            var arr = Resources.FindObjectsOfTypeAll(typeof(ResearchPopUp));
-            if (arr != null && arr.Length > 0)
-            {
-                AudioManager.main.PlayButtonClick();
-                ((ResearchPopUp)arr[0]).ToggleOpen();
-            }
+            AudioManager.main.PlayButtonClick();
+            researchPopUp.ToggleOpen();
         }
 
         if (Input.GetMouseButtonDown(1))

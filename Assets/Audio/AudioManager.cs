@@ -78,8 +78,8 @@ public class AudioManager : MonoBehaviour
 
     // Absurd money audio management
     int moneyEffectCurrentCount = 0;
-    const int moneyEffectLimit = 20;
-    const int bufferSize = 60;
+    const int moneyEffectLimit = 25;
+    const int bufferSize = 35;
     bool[] rollingBuffer = new bool[bufferSize];
     int currentFrame = 0;
     bool moneyEffectPlayedThisFrame;

@@ -15,6 +15,9 @@ public class UpgradeObject : ScriptableObject
 
     public float priceScaling;
 
+    [Range(0, 100)]
+    public int sortingPriority;
+
     public List<UpgradeEffect> effects;
 
     public List<UpgradeObject> nextUpgrades;

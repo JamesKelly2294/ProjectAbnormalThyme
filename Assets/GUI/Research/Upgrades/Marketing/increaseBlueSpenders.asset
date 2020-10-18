@@ -10,17 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdfa660f6bc3eb41800b29ed6faf667, type: 3}
-  m_Name: IncreasePurple
+  m_Name: increaseBlueSpenders
   m_EditorClassIdentifier: 
-  title: Set expectations
-  description: Parkgoers need to understand that we are a high-class establishment.
-    They should bring more cash. (x2 purple bill value)
-  cost: 100000
-  image: {fileID: 21300000, guid: e04fb6c2fcc851140a4125c4458b2226, type: 3}
+  title: Market How Cool the People are Who Ride the Ride
+  description: Increases the likelyhood of DINKs showing up
+  cost: 5000
+  image: {fileID: 21300000, guid: 5f3b6d341a2421342bbc3f974897abe1, type: 3}
   repeats: 1
-  priceScaling: 3.75
+  priceScaling: 5
+  sortingPriority: 6
   effects:
-  - parameter: 16
+  - parameter: 5
+    operation: 1
+    amount: 1.1
+  - parameter: 6
     operation: 1
     amount: 2
   nextUpgrades: []
