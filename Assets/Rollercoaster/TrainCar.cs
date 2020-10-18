@@ -15,7 +15,7 @@ public class TrainCar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trackManager = FindObjectOfType<TrackManager>();
+        trackManager = TrackManager.Instance;
     }
 
     // Update is called once per frame

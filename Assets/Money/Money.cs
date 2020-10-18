@@ -37,18 +37,20 @@ public class Money : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        t = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         t += Time.fixedDeltaTime;
-        if ( t > animationTime) {
+        if (t > animationTime)
+        {
             t -= animationTime;
         }
- 
+
         Vector3 offset = new Vector3(xAcceleration.Evaluate(t / animationTime) * xAccelerationScale, yAcceleration.Evaluate(t / animationTime) * yAccelerationScale, 0f);
         transform.localPosition += offset;
 

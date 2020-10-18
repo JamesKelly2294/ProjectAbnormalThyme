@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1928640086378780013}
   m_Layer: 0
   m_Name: RedMoney
-  m_TagString: Untagged
+  m_TagString: Red Money
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

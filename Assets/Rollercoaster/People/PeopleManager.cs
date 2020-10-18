@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class PeopleManager : MonoBehaviour
 {
+    static PeopleManager _instance;
+    public static PeopleManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<PeopleManager>();
+            }
+            return _instance;
+        }
+    }
 
     public LinkedList<TrainCarPerson> peopleInLine = new LinkedList<TrainCarPerson>();
     public int maxLineLength = 10;

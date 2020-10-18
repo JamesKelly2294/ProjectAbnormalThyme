@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4914234258551491984}
   m_Layer: 0
   m_Name: GreenMoney
-  m_TagString: Untagged
+  m_TagString: Green Money
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5365a4e55d3739b4fae613a0e0307580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   xAcceleration:
     serializedVersion: 2
     m_Curve:
@@ -192,4 +193,4 @@ MonoBehaviour:
   t: 0
   animationTime: 2
   rotationRate: -100
-  value: 1
+  StartingValue: 1

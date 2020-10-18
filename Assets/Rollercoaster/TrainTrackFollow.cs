@@ -26,7 +26,7 @@ public class TrainTrackFollow : MonoBehaviour
     private void Awake()
     {
         activePaths = new List<TweenerCore<Vector3, Path, PathOptions>>();
-        trackManager = FindObjectOfType<TrackManager>();
+        trackManager = TrackManager.Instance;
     }
 
     public void PullUpToStart()

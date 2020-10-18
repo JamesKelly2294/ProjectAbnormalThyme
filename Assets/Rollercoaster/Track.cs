@@ -32,7 +32,7 @@ public class Track : MonoBehaviour, Buyable
 
     private void Awake()
     {
-        trackManager = FindObjectOfType<TrackManager>();
+        trackManager = TrackManager.Instance;
     }
 
     // Start is called before the first frame update

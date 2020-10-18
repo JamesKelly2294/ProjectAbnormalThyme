@@ -61,8 +61,8 @@ public class Train : MonoBehaviour
     public void Initialize()
     {
         Vector3 offset = new Vector3(0, 0, 0);
-        peopleManager = FindObjectOfType<PeopleManager>();
-        trainManager = FindObjectOfType<TrainManager>();
+        peopleManager = PeopleManager.Instance;
+        trainManager = TrainManager.Instance;
 
         for (int i = 0; i < numberOfCars; i++)
         {

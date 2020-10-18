@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class TrainManager : MonoBehaviour
 {
+    static TrainManager _instance;
+    public static TrainManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<TrainManager>();
+            }
+            return _instance;
+        }
+    }
+
     public GameObject trainPrefab;
     public List<Train> trains;
 

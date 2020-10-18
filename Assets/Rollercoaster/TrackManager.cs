@@ -4,6 +4,19 @@ using System.Linq;
 
 public class TrackManager : MonoBehaviour
 {
+    static TrackManager _instance;
+    public static TrackManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<TrackManager>();
+            }
+            return _instance;
+        }
+    }
+    
     const int MAX_TRACK_LENGTH = 16;
     public float rideExcitementMultiplier = 1;
 
@@ -22,7 +35,7 @@ public class TrackManager : MonoBehaviour
 
     private void Awake()
     {
-        trainManager = FindObjectOfType<TrainManager>();
+        trainManager = TrainManager.Instance;
         Tracks = new List<Track>();
 
         unlockedTracksMap.Add(TrackType.Straight, true);
@@ -158,7 +171,7 @@ public class TrackManager : MonoBehaviour
         newTrack.transform.position = new Vector3(coordinates.x, coordinates.y, 0);
 
         trainManager.GhostifyActiveAndIdleTrains();
-        
+
         return newTrack;
     }
 }

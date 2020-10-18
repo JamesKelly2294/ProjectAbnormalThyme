@@ -15,7 +15,7 @@ public class ApplyMinSpeedReduction : MonoBehaviour
 
     private void Start()
     {
-        trackManager = FindObjectOfType<TrackManager>();
+        trackManager = TrackManager.Instance;
         minSpeedReset.enabled = false;
     }
 

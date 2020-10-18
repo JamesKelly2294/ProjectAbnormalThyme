@@ -23,7 +23,7 @@ public class MoneyPrinter : MonoBehaviour
     void Start()
     {
         t = 0;
-        moneyManager = FindObjectOfType<MoneyManager>();
+        moneyManager = MoneyManager.Instance;
     }
 
     // Update is called once per frame
@@ -63,10 +63,15 @@ public class MoneyPrinter : MonoBehaviour
 
         AudioManager.main.PlayMoneyEffect();
 
-        Money instance = Instantiate(moneyPrefab);
-        instance.t = Random.Range(0, instance.animationTime);
-        instance.transform.position = transform.position;
-        Destroy(instance.gameObject, 5f);
+        Money instance = ObjectPooler.Instance.GetPooledObject(moneyPrefab.tag).GetComponent<Money>();
+        if (instance != null)
+        {
+            instance.t = Random.Range(0, instance.animationTime);
+            instance.transform.position = transform.position;
+            instance.transform.rotation = transform.rotation;
+            instance.gameObject.SetActive(true);
+            ObjectPooler.Instance.ReturnObjectToPoolAfterDelay(instance.gameObject, 5f);
+        }
         return current - moneyPrefab.StartingValue;
     }
 }

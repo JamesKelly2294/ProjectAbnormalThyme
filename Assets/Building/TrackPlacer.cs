@@ -29,8 +29,8 @@ public class TrackPlacer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trackManager = FindObjectOfType<TrackManager>();
-        moneyManager = FindObjectOfType<MoneyManager>();
+        trackManager = TrackManager.Instance;
+        moneyManager = MoneyManager.Instance;
         tracksTab = FindObjectOfType<TracksTab>();
 
         trackedCamera = Camera.main;

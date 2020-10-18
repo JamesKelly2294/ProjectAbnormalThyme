@@ -25,3 +25,4 @@ MonoBehaviour:
   nextUpgrades:
   - {fileID: 11400000, guid: b66386b85e29b5d4583af4bea0a19b58, type: 2}
   - {fileID: 11400000, guid: 13c5a519d4caeff4eb632f7e12dab284, type: 2}
+  - {fileID: 11400000, guid: d8e7a7a620a760f4697273800516657f, type: 2}

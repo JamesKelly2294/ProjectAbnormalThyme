@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Green Money
+  - Red Money
+  - Blue Money
+  - Purple Money
   layers:
   - Default
   - TransparentFX

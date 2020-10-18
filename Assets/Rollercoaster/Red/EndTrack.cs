@@ -16,8 +16,8 @@ public class EndTrack : MonoBehaviour
     void Start()
     {
         trackPlacer = FindObjectOfType<TrackPlacer>();
-        trackManager = FindObjectOfType<TrackManager>();
-        moneyManager = FindObjectOfType<MoneyManager>();
+        trackManager = TrackManager.Instance;
+        moneyManager = MoneyManager.Instance;
     }
 
     // Update is called once per frame
