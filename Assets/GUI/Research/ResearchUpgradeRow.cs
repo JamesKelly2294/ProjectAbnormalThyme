@@ -73,28 +73,19 @@ public class ResearchUpgradeRow : MonoBehaviour
 
         upgrades.Sort((first, second) =>
         {
-            if (first.upgrade.sortingPriority != second.upgrade.sortingPriority)
+            var firstUpgrade = first.upgrade;
+            var secondUpgrade = second.upgrade;
+            var compareVal = firstUpgrade.repeats.CompareTo(secondUpgrade.repeats);
+            if (compareVal == 0)
             {
-                return first.upgrade.sortingPriority.CompareTo(second.upgrade.sortingPriority);
-            }
-            else
-            {
-                if (first.upgrade.repeats == second.upgrade.repeats)
+                compareVal = firstUpgrade.sortingPriority.CompareTo(secondUpgrade.sortingPriority);
+                if(compareVal == 0)
                 {
-                    return first.upgrade.title.CompareTo(second.upgrade.title);
-                }
-                else
-                {
-                    if (first.upgrade.repeats)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
+                    compareVal = firstUpgrade.title.CompareTo(secondUpgrade.title);
                 }
             }
+
+            return compareVal;
         });
 
         foreach (var row in upgrades)

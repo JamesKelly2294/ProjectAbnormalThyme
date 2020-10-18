@@ -19,6 +19,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: cbfa3b5971e5d144fb7872452019f469, type: 3}
   repeats: 0
   priceScaling: 3
+  sortingPriority: 0
   effects:
   - parameter: 10
     operation: 1
